@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Customer App</string>
+
+    <!--Sign Up Acticity-->
+    <string name="button_fb">Login with Facebook</string>
+    <string name="button_google">Login with G+</string>
+    <string name="input_first_name">First Name</string>
+    <string name="input_last_name">Last Name</string>
+    <string name="input_email">Email Adress</string>
+    <string name="input_password">Password</string>
+    <string name="input_password_confirm">Confirm Password</string>
+    <string name="or">-OR-</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_account">Already have a HNAI Account? Sign In</string>
+
+</resources>

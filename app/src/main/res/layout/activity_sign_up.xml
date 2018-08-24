@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.feature.main.SignUpActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="@string/sign_up"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/input_first_name"
+            android:hint="@string/input_first_name"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/input_last_name"
+            android:hint="@string/input_last_name"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/input_email"
+            android:hint="@string/input_email"
+            android:gravity="center"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/input_password"
+                android:hint="@string/input_password"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:inputType="textPassword"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/input_password_confirm"
+                android:hint="@string/input_password_confirm"
+                android:gravity="center"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_sign_up"
+            android:layout_marginTop="50dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/shape_button_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="-OR-" />
+
+        <include
+            layout="@layout/button_fb"
+            android:id="@+id/button_fb"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp" />
+
+        <include
+            layout="@layout/button_g"
+            android:id="@+id/button_g"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/already_have_account" />
+    </LinearLayout>
+
+
+</ScrollView>
