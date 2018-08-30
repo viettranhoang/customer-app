@@ -19,5 +19,15 @@
     <string name="welcome_back">Welcome Back,</string>
     <string name="forgot_password">Forgot your password?</string>
     <string name="dont_have_account">Don\'t have an account?  </string>
+    
+    <!--Verify Phone Activity-->
+    <string name="text_verify1">Please enter your phone number so we can verify your account and
+        connect you with our trusted technician</string>
+    <string name="text_verify2">Please enter the 4-digital code send to you at</string>
+    <string name="text_the_code_will_expire">The code will expire in 2 mins</string>
+    <string name="text_dont_receive_a_sms">Don\'t receive a SMS? Resend</string>
+    <string name="text_invalid_verification_code">Invalid cerification code!</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_verify">Verify</string>
 
 </resources>
