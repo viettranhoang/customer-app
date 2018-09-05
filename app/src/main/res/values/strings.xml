@@ -12,6 +12,7 @@
     <string name="or">-OR-</string>
     <string name="sign_up">Sign Up</string>
     <string name="already_have_account">Already have a HNAI Account? Sign In</string>
+    <string name="password_confirm_is_not_true">Password confirm is not true</string>
 
     <!--Sign In Activity-->
     <string name="input_phone">Phone number</string>

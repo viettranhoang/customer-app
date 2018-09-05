@@ -9,6 +9,7 @@
     tools:context=".ui.feature.signup.VerifyPhoneActivity">
 
     <TextView
+        android:id="@+id/text_content"
         android:text="@string/text_verify1"
         android:gravity="center"
         android:textSize="18sp"
@@ -27,10 +28,13 @@
         android:id="@+id/input_code"
         android:inputType="number"
         android:visibility="gone"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:id="@+id/layout_input_phone"
         android:layout_marginTop="40dp"
         android:weightSum="3"
         android:orientation="horizontal"
@@ -64,8 +68,20 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/button_verify"
+        android:id="@+id/button_continue"
         android:text="@string/button_continue"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_button_red"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button_verify"
+        android:text="@string/button_verify"
+        android:visibility="gone"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18dp"

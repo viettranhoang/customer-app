@@ -12,6 +12,21 @@ public class VerifyPhoneResponse {
     @Expose
     @SerializedName("status")
     private String status;
+    @Expose
+    @SerializedName("code")
+    private String code;
+
+    @Expose
+    @SerializedName("message")
+    private String message;
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 
     public Payload getPayload() {
         return payload;
@@ -30,19 +45,6 @@ public class VerifyPhoneResponse {
             return verifyingRequestId;
         }
 
-        @Override
-        public String toString() {
-            return "Payload{" +
-                    "verifyingRequestId='" + verifyingRequestId + '\'' +
-                    '}';
-        }
     }
 
-    @Override
-    public String toString() {
-        return "VerifyPhoneResponse{" +
-                "payload=" + payload +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }

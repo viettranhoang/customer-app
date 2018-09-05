@@ -13,6 +13,22 @@ public class RegisterResponse {
     @SerializedName("status")
     private String status;
 
+    @Expose
+    @SerializedName("code")
+    private String code;
+
+    @Expose
+    @SerializedName("message")
+    private String message;
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
     public Payload getPayload() {
         return payload;
     }

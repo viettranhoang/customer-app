@@ -3,7 +3,9 @@ package com.vit.customerapp.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RegisterRequest {
+import java.io.Serializable;
+
+public class RegisterRequest implements Serializable{
 
 
     @Expose
@@ -28,12 +30,8 @@ public class RegisterRequest {
     @SerializedName("first_name")
     private String firstName;
 
-    public RegisterRequest(String verifyRequestId, String countryCode, String password,
-                           String phoneNumber, String email, String lastName, String firstName) {
-        this.verifyRequestId = verifyRequestId;
-        this.countryCode = countryCode;
+    public RegisterRequest(String password, String email, String lastName, String firstName) {
         this.password = password;
-        this.phoneNumber = phoneNumber;
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -65,5 +63,33 @@ public class RegisterRequest {
 
     public String getFirst_name() {
         return firstName;
+    }
+
+    public void setVerifyRequestId(String verifyRequestId) {
+        this.verifyRequestId = verifyRequestId;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 }

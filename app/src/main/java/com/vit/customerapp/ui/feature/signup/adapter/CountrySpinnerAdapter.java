@@ -29,7 +29,7 @@ public class CountrySpinnerAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return "(84) ";
     }
 
     @Override
