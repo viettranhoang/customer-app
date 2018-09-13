@@ -11,6 +11,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -32,8 +40,12 @@ import com.vit.customerapp.R;
 import com.vit.customerapp.data.model.RegisterRequest;
 import com.vit.customerapp.data.model.SocialSignupRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -71,6 +83,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     private static final String TAG = SignUpActivity.class.getSimpleName();
 
+    private static final String SOCIAL_TYPE_GMAIL = "GMAIL";
+    private static final String SOCIAL_TYPE_FACEBOOK = "FACEBOOK";
+
     private static final int RC_SIGN_IN = 001;
 
     private GoogleSignInClient mGoogleSignInClient;
@@ -80,6 +95,8 @@ public class SignUpActivity extends AppCompatActivity {
     private WeakReference<SignUpActivity> weakAct = new WeakReference<>(this);
 
     private SocialSignupRequest mSocialSignupRequest;
+
+    private CallbackManager mCallbackManager;
 
 
     // ---------------------------------------------------------------------------------------------
@@ -94,6 +111,21 @@ public class SignUpActivity extends AppCompatActivity {
 
         initGoogleSignIn();
 
+        initFacebookSignIn();
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @OnClick(R.id.button_sign_up)
@@ -112,24 +144,79 @@ public class SignUpActivity extends AppCompatActivity {
 
     @OnClick(R.id.button_fb)
     void onClickFacebook() {
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
-
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
+        LoginManager.getInstance().logInWithReadPermissions(SignUpActivity.this,
+                Arrays.asList("public_profile", "email", "user_gender"));
     }
 
 
     // ---------------------------------------------------------------------------------------------
     // PRIVATE METHODS
     // ---------------------------------------------------------------------------------------------
+
+    private void initFacebookSignIn() {
+        mCallbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                getFacebookProfile(loginResult);
+
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d(TAG, "onCancel: Login canceled");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.e(TAG, "onError: Login failed");
+            }
+        });
+    }
+
+    private void getFacebookProfile(LoginResult loginResult) {
+        Profile profile = Profile.getCurrentProfile();
+
+        String id = loginResult.getAccessToken().getUserId();
+        String token = loginResult.getAccessToken().getToken();
+        String firstName = profile.getFirstName();
+        String lastName = profile.getLastName();
+        String avatar = profile.getProfilePictureUri(300, 300).toString();
+
+        GraphRequest request = GraphRequest.newMeRequest(
+                loginResult.getAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(
+                            JSONObject object,
+                            GraphResponse response) {
+
+                        Log.v("LoginActivity Response ", response.toString());
+
+                        try {
+                            String email = object.getString("email");
+                            String gender = object.getString("gender");
+
+                            mSocialSignupRequest = new SocialSignupRequest(
+                                    avatar, email, lastName, firstName,
+                                    token, SOCIAL_TYPE_FACEBOOK, id);
+
+                            mSocialSignupRequest.setGender(!gender.isEmpty() ? gender : "");
+
+                            SignUpActivity mainAct = weakAct.get();
+                            jumpVerifyActivity(mainAct, mSocialSignupRequest);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,gender");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
 
     private void initGoogleSignIn() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -150,7 +237,7 @@ public class SignUpActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
-            new GetProfileDetails(account, weakAct, TAG).execute();
+            new GetGoogleProfileDetails(account, weakAct, TAG).execute();
         } catch (ApiException e) {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
@@ -186,11 +273,12 @@ public class SignUpActivity extends AppCompatActivity {
         activity.startActivity(intent);
     }
 
+
     // ---------------------------------------------------------------------------------------------
     // CLASSES
     // ---------------------------------------------------------------------------------------------
 
-    static class GetProfileDetails extends AsyncTask<Void, Void, Person> {
+    static class GetGoogleProfileDetails extends AsyncTask<Void, Void, Person> {
 
         private PeopleService mPeopleService;
         private int mAuthError = -1;
@@ -198,7 +286,7 @@ public class SignUpActivity extends AppCompatActivity {
         private String TAG;
         private GoogleSignInAccount mAcount;
 
-        GetProfileDetails(GoogleSignInAccount account, WeakReference<SignUpActivity> weakAct, String TAG) {
+        GetGoogleProfileDetails(GoogleSignInAccount account, WeakReference<SignUpActivity> weakAct, String TAG) {
             this.TAG = TAG;
             this.mWeakAct = weakAct;
             this.mAcount = account;
