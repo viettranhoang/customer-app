@@ -28,8 +28,9 @@
         android:id="@+id/input_code"
         android:inputType="number"
         android:visibility="gone"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:textSize="30sp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

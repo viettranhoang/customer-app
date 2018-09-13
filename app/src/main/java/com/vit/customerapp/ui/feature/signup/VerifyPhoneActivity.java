@@ -1,10 +1,9 @@
 package com.vit.customerapp.ui.feature.signup;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 import com.vit.customerapp.R;
 import com.vit.customerapp.data.model.RegisterRequest;
 import com.vit.customerapp.data.model.RegisterResponse;
+import com.vit.customerapp.data.model.SocialSignupRequest;
 import com.vit.customerapp.data.model.VerifyPhoneRequest;
 import com.vit.customerapp.data.model.VerifyPhoneResponse;
 import com.vit.customerapp.data.model.VerifyPincodeResponse;
@@ -42,7 +42,6 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     @BindView(R.id.button_continue)
     Button mButtonContinue;
 
-
     @BindView(R.id.layout_input_phone)
     LinearLayout mLayoutInputPhone;
 
@@ -65,11 +64,13 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     @BindView(R.id.spinner_country)
     Spinner mSpinnerCountry;
 
-    private static final String TAG = "VerifyPhone: ";
+    private static final String TAG = VerifyPhoneActivity.class.getSimpleName();
 
     private APIService mAPIService;
 
     private RegisterRequest mRegisterRequest;
+
+    private SocialSignupRequest mSocialRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +83,11 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         mAPIService = ApiUtils.getAPIService();
 
         mRegisterRequest = (RegisterRequest) getIntent().getSerializableExtra("registerRequest");
+
+        mSocialRequest = (SocialSignupRequest) getIntent().getSerializableExtra("socialRequest");
+
+        Toast.makeText(this, mSocialRequest.getSocialToken(), Toast.LENGTH_SHORT).show();
+
 
 
     }
@@ -104,6 +110,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             postVerifyPincode(mRegisterRequest.getVerifyRequestId(), mInputCode.getText().toString());
         }
     }
+
 
     // ---------------------------------------------------------------------------------------------
     // PRIBATE METHODS
