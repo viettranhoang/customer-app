@@ -337,7 +337,7 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     SocialSignupRequest request = new SocialSignupRequest(mAcount.getPhotoUrl().toString(),
                             mAcount.getEmail(), mAcount.getFamilyName(), mAcount.getGivenName(),
-                            mAcount.getIdToken(), "GMAIL", mAcount.getId());
+                            mAcount.getIdToken(), SOCIAL_TYPE_GMAIL, mAcount.getId());
                     if (meProfile != null) {
                         List<Gender> genders = meProfile.getGenders();
                         if (genders != null && genders.size() > 0) {
