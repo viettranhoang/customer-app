@@ -2,10 +2,16 @@ package com.vit.customerapp.ui.feature.signup;
 
 import android.app.AlertDialog;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -32,6 +38,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class VerifyPhoneActivity extends AppCompatActivity {
+
+    private static final String TAG = VerifyPhoneActivity.class.getSimpleName();
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
+    @BindView(R.id.text_toolbar)
+    TextView mToolbarTitle;
 
     @BindView(R.id.input_phone_number)
     EditText mInputPhone;
@@ -64,7 +78,6 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     @BindView(R.id.spinner_country)
     Spinner mSpinnerCountry;
 
-    private static final String TAG = VerifyPhoneActivity.class.getSimpleName();
 
     private APIService mAPIService;
 
@@ -75,8 +88,15 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            w.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
         setContentView(R.layout.activity_verify_phone);
         ButterKnife.bind(this);
+
+        initActionBar();
 
         mSpinnerCountry.setAdapter(new CountrySpinnerAdapter(this));
 
@@ -87,9 +107,14 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         mSocialRequest = (SocialSignupRequest) getIntent().getSerializableExtra("socialRequest");
 
         Toast.makeText(this, mSocialRequest.getSocialToken(), Toast.LENGTH_SHORT).show();
+    }
 
-
-
+    private void initActionBar() {
+        mToolbarTitle.setText(R.string.verify_phone_number);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_left_black));
     }
 
     @OnClick(R.id.button_continue)
@@ -168,7 +193,6 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
     private void postRegister(RegisterRequest request) {
         mAPIService.postRegisterResponse(request).enqueue(new Callback<RegisterResponse>() {

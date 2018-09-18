@@ -1,4 +1,4 @@
-package com.vit.customerapp.ui.feature.main;
+package com.vit.customerapp.ui.feature.signin;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

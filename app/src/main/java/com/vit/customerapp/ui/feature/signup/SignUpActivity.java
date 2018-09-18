@@ -5,11 +5,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.EditText;
+import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -52,23 +53,30 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    @BindView(R.id.layout_sign_out)
+    LinearLayout mLayoutSignOut;
+
     @BindView(R.id.input_first_name)
-    EditText mInputFirstName;
+    TextInputEditText mInputFirstName;
 
     @BindView(R.id.input_last_name)
-    EditText mInputLastName;
+    TextInputEditText mInputLastName;
 
     @BindView(R.id.input_email)
-    EditText mInputEmail;
+    TextInputEditText mInputEmail;
 
     @BindView(R.id.input_password)
-    EditText mInputPassword;
+    TextInputEditText mInputPassword;
 
     @BindView(R.id.input_password_confirm)
-    EditText mInputPasswordConfirm;
+    TextInputEditText mInputPasswordConfirm;
+
+    @BindView(R.id.text_password_not_match)
+    TextView mTextPasswordNotMatch;
 
     @BindView(R.id.button_g)
     LinearLayout mButtonGoogle;
@@ -92,7 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private RegisterRequest mRegisterRequest;
 
-    private WeakReference<SignUpActivity> weakAct = new WeakReference<>(this);
+    private WeakReference<SignUpActivity> mWeakAct = new WeakReference<>(this);
 
     private SocialSignupRequest mSocialSignupRequest;
 
@@ -106,6 +114,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
@@ -146,6 +155,17 @@ public class SignUpActivity extends AppCompatActivity {
     void onClickFacebook() {
         LoginManager.getInstance().logInWithReadPermissions(SignUpActivity.this,
                 Arrays.asList("public_profile", "email", "user_gender"));
+    }
+
+    @OnTextChanged({R.id.input_first_name, R.id.input_last_name, R.id.input_email,
+            R.id.input_password, R.id.input_password_confirm})
+    void onInputChanged() {
+        if (!isAllInputEmpty()) {
+            mLayoutSignOut.setAlpha(1);
+        } else {
+            mLayoutSignOut.setAlpha((float) 0.5);
+        }
+
     }
 
 
@@ -204,7 +224,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             mSocialSignupRequest.setGender(!gender.isEmpty() ? gender : "");
 
-                            SignUpActivity mainAct = weakAct.get();
+                            SignUpActivity mainAct = mWeakAct.get();
                             jumpVerifyActivity(mainAct, mSocialSignupRequest);
 
                         } catch (JSONException e) {
@@ -237,34 +257,40 @@ public class SignUpActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
-            new GetGoogleProfileDetails(account, weakAct, TAG).execute();
+            new GetGoogleProfileDetails(account, mWeakAct, TAG).execute();
         } catch (ApiException e) {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
     }
 
     private boolean isInfoAlready() {
-        String firstName = mInputFirstName.getText().toString();
-        String lastName = mInputLastName.getText().toString();
-        String email = mInputEmail.getText().toString();
-        String password = mInputPassword.getText().toString();
-        String passwordConfirm = mInputPasswordConfirm.getText().toString();
+        if (!isAllInputEmpty()) {
+            String firstName = mInputFirstName.getText().toString();
+            String lastName = mInputLastName.getText().toString();
+            String email = mInputEmail.getText().toString();
+            String password = mInputPassword.getText().toString();
+            String passwordConfirm = mInputPasswordConfirm.getText().toString();
 
-        if (firstName.isEmpty() ||
-                lastName.isEmpty() ||
-                email.isEmpty() ||
-                password.isEmpty() ||
-                passwordConfirm.isEmpty()) {
-            return false;
+            if (!password.equals(passwordConfirm)) {
+                mTextPasswordNotMatch.setVisibility(View.VISIBLE);
+                return false;
+            }
+            mRegisterRequest = new RegisterRequest(password, email, lastName, firstName);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isAllInputEmpty() {
+        if (mInputFirstName.getText().toString().isEmpty() ||
+                mInputLastName.getText().toString().isEmpty() ||
+                mInputEmail.getText().toString().isEmpty() ||
+                mInputPassword.getText().toString().isEmpty() ||
+                mInputPasswordConfirm.getText().toString().isEmpty()) {
+            return true;
         }
 
-        if (!password.equals(passwordConfirm)) {
-            Toast.makeText(this, getString(R.string.password_confirm_is_not_true), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        mRegisterRequest = new RegisterRequest(password, email, lastName, firstName);
-        return true;
+        return false;
     }
 
     private void jumpVerifyActivity(Activity activity, SocialSignupRequest request) {
