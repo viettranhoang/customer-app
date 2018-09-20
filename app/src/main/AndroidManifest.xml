@@ -55,8 +55,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.feature.signin.ForgotPasswordActivity" />
-        <activity android:name=".ui.feature.signin.NewPasswordSettingActivity"></activity>
+        <activity android:name=".ui.feature.password.ForgotPasswordActivity" />
+        <activity android:name=".ui.feature.password.NewPasswordSettingActivity"></activity>
     </application>
 
 </manifest>

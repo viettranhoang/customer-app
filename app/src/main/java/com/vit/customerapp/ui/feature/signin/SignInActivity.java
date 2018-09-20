@@ -8,42 +8,26 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 import com.vit.customerapp.R;
-import com.vit.customerapp.data.model.response.BaseResponse;
 import com.vit.customerapp.data.model.request.LoginRequest;
-import com.vit.customerapp.data.model.response.RegisterResponse;
 import com.vit.customerapp.data.model.request.SocialSigninRequest;
-import com.vit.customerapp.data.remote.ApiUtils;
+import com.vit.customerapp.data.model.response.BaseResponse;
+import com.vit.customerapp.data.model.response.RegisterResponse;
 import com.vit.customerapp.ui.feature.main.MainActivity;
+import com.vit.customerapp.ui.feature.password.ForgotPasswordActivity;
 import com.vit.customerapp.ui.feature.signup.SignUpActivity;
 import com.vit.customerapp.ui.util.Utils;
-
-import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity implements SignInContract.View {
 
     private static final String TAG = SignUpActivity.class.getSimpleName();
-
-    private static final int RC_SIGN_IN = 001;
 
     @BindView(R.id.input_phone)
     TextInputEditText mInputPhone;
@@ -55,10 +39,7 @@ public class SignInActivity extends AppCompatActivity {
     LinearLayout mLayoutSignIn;
 
 
-    private GoogleSignInClient mGoogleSignInClient;
-    private CallbackManager mCallbackManager;
-
-
+    private SignInContract.Presenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,28 +47,65 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
 
-        initGoogleSignIn();
+        mPresenter = new SignInPresenter(this);
 
-        initFacebookSignIn();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RC_SIGN_IN) {
+        mPresenter.onActivityResult(requestCode, resultCode, data);
+    }
 
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
+    @Override
+    public void onLoginSuccess(RegisterResponse response) {
+        if (response.getStatus().equals(Utils.STATUS_SUCCESS)) {
+            Toast.makeText(SignInActivity.this, "Login successfully!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+        } else {
+            Toast.makeText(SignInActivity.this, response.getStatus() + response.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
 
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+    @Override
+    public void onSocialSignInSuccess(BaseResponse response) {
+        if (response.getStatus().equals(Utils.STATUS_SUCCESS)) {
+            Toast.makeText(SignInActivity.this, "Login successfully!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+        } else {
+            Toast.makeText(SignInActivity.this, response.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onLoginError(Throwable t) {
+        Log.e(TAG, "onLoginError: " + t.getMessage());
+    }
+
+    @Override
+    public void onSocialSignInError(Throwable t) {
+        Log.e(TAG, "onSocialSignInError: " + t.getMessage());
+    }
+
+    @Override
+    public void onFacebookSignInSuccess(LoginResult loginResult) {
+        Toast.makeText(SignInActivity.this, loginResult.getAccessToken().getUserId(), Toast.LENGTH_SHORT).show();
+
+        mPresenter.postSocialSignIn(new SocialSigninRequest(loginResult.getAccessToken().getUserId(), Utils.SOCIAL_TYPE_FACEBOOK));
+    }
+
+    @Override
+    public void onGoogleSignInSuccess(GoogleSignInAccount account) {
+        Toast.makeText(this, account.getId(), Toast.LENGTH_SHORT).show();
+
+        mPresenter.postSocialSignIn(new SocialSigninRequest(account.getId(), Utils.SOCIAL_TYPE_GMAIL));
     }
 
     @OnClick(R.id.button_sign_in)
     void onClickSignIn() {
         if (!isInputEmpty()) {
-            postLogin(new LoginRequest(mInputPhone.getText().toString(), mInputPassword.getText().toString(), "VN"));
+            mPresenter.postLogin(new LoginRequest(mInputPhone.getText().toString(), mInputPassword.getText().toString(), "VN"));
         }
     }
 
@@ -97,14 +115,13 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.button_fb)
-    void onClickFacebook()  {
-        LoginManager.getInstance().logInWithReadPermissions(SignInActivity.this,
-                Arrays.asList("public_profile", "email", "user_gender"));
+    void onClickFacebook() {
+        mPresenter.signInFacebook(SignInActivity.this);
     }
 
     @OnClick(R.id.button_g)
-    void onClickGoogle()  {
-        signInGoogle();
+    void onClickGoogle() {
+        mPresenter.signInGoogle(SignInActivity.this);
     }
 
     @OnClick(R.id.text_sign_up)
@@ -121,105 +138,12 @@ public class SignInActivity extends AppCompatActivity {
         }
     }
 
+
     private boolean isInputEmpty() {
         if (mInputPhone.getText().toString().isEmpty() |
                 mInputPassword.getText().toString().isEmpty()) {
             return true;
         }
         return false;
-    }
-
-    private void initFacebookSignIn() {
-        mCallbackManager = CallbackManager.Factory.create();
-
-        LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(SignInActivity.this, loginResult.getAccessToken().getUserId(), Toast.LENGTH_SHORT).show();
-                postSocialSignIn(new SocialSigninRequest(loginResult.getAccessToken().getUserId(), Utils.SOCIAL_TYPE_FACEBOOK));
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d(TAG, "onCancel: Login canceled");
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.e(TAG, "onError: Login failed");
-            }
-        });
-    }
-
-    private void initGoogleSignIn() {
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.server_client_id))
-                .requestEmail()
-                .build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-    }
-
-    private void signInGoogle() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-
-    }
-
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-        try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-            Toast.makeText(this, account.getId(), Toast.LENGTH_SHORT).show();
-
-            postSocialSignIn(new SocialSigninRequest(account.getId(), Utils.SOCIAL_TYPE_GMAIL));
-        } catch (ApiException e) {
-            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-        }
-    }
-
-    private void postSocialSignIn(SocialSigninRequest request) {
-        ApiUtils.getAPIService().postSocialSignin(request)
-                .enqueue(new Callback<BaseResponse>() {
-                    @Override
-                    public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                        if (response.isSuccessful() && response.body() != null) {
-                            if (response.body().getStatus().equals(Utils.STATUS_SUCCESS)) {
-                                Toast.makeText(SignInActivity.this, "Đăng nhập thành công với id:" + request.getSocialId(), Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SignInActivity.this, MainActivity.class));
-                            } else {
-                                Toast.makeText(SignInActivity.this, request.getSocialId() + response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            Log.e(TAG, "onResponse: ERROR");
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<BaseResponse> call, Throwable t) {
-                        Log.e(TAG, "onFailure: " + t.toString());
-                    }
-                });
-    }
-
-    private void postLogin(LoginRequest request) {
-        ApiUtils.getAPIService().postLogin(request).enqueue(new Callback<RegisterResponse>() {
-            @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    if (response.body().getStatus().equals(Utils.STATUS_SUCCESS)) {
-                        Toast.makeText(SignInActivity.this, "Login successfully!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SignInActivity.this, MainActivity.class));
-                    } else {
-                        Toast.makeText(SignInActivity.this, response.body().getStatus() + response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.getMessage() );
-            }
-        });
     }
 }

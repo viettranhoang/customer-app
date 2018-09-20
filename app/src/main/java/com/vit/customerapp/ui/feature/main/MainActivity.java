@@ -10,9 +10,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.vit.customerapp.R;
-import com.vit.customerapp.ui.feature.signin.NewPasswordSettingActivity;
 import com.vit.customerapp.ui.feature.signin.SignInActivity;
-import com.vit.customerapp.ui.feature.signup.SignUpActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
