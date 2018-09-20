@@ -1,15 +1,18 @@
 package com.vit.customerapp.data.remote;
 
-import com.vit.customerapp.data.model.RegisterRequest;
-import com.vit.customerapp.data.model.RegisterResponse;
-import com.vit.customerapp.data.model.VerifyPhoneRequest;
-import com.vit.customerapp.data.model.VerifyPhoneResponse;
-import com.vit.customerapp.data.model.VerifyPincodeResponse;
+import com.vit.customerapp.data.model.response.BaseResponse;
+import com.vit.customerapp.data.model.request.LoginRequest;
+import com.vit.customerapp.data.model.request.RegisterRequest;
+import com.vit.customerapp.data.model.response.RegisterResponse;
+import com.vit.customerapp.data.model.request.ResetPasswordRequest;
+import com.vit.customerapp.data.model.request.SocialSigninRequest;
+import com.vit.customerapp.data.model.request.VerifyPhoneRequest;
+import com.vit.customerapp.data.model.response.VerifyPhoneResponse;
+import com.vit.customerapp.data.model.request.VerifyPincodeRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface APIService {
 
@@ -17,12 +20,18 @@ public interface APIService {
     Call<VerifyPhoneResponse> postVerifyPhoneCall(@Body VerifyPhoneRequest verifyPhoneRequest);
 
     @POST("api/user/verify_pincode")
-    Call<VerifyPincodeResponse> postVerifyPincode(@Query("verify_request_id") String verifyRequestId,
-                                                  @Query("pincode") String pincode);
+    Call<BaseResponse> postVerifyPincode(@Body VerifyPincodeRequest verifyPincodeRequest);
 
     @POST("api/user/register")
     Call<RegisterResponse> postRegisterResponse(@Body RegisterRequest registerRequest);
 
+    @POST("api/user/social_login")
+    Call<BaseResponse> postSocialSignin(@Body SocialSigninRequest socialSignupRequest);
 
+    @POST("api/user/reset_password")
+    Call<BaseResponse> postResetPassword(@Body ResetPasswordRequest resetPasswordRequest);
+
+    @POST("/api/user/login")
+    Call<RegisterResponse> postLogin(@Body LoginRequest loginRequest);
 
 }

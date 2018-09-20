@@ -35,12 +35,12 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_phone"
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/input_phone"
                     android:hint="@string/input_phone"
                     android:gravity="center"
                     android:inputType="number"
@@ -50,12 +50,13 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_password"
                 android:layout_marginTop="20dp"
+                app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
+                    android:id="@+id/input_password"
                     android:hint="@string/input_password"
                     android:gravity="center"
                     android:inputType="textPassword"
@@ -68,11 +69,7 @@
                 android:id="@+id/button_sign_in"
                 android:layout_marginTop="50dp"
                 android:text="@string/sign_in"
-                android:textSize="16sp"
-                android:typeface="monospace"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:background="@drawable/round_corners_gradient"
+                style="@style/ButtonGradient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -91,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:alpha="0.5"
             android:text="-OR-" />
 
         <include
@@ -114,6 +112,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -125,10 +124,11 @@
 
             <TextView
                 android:id="@+id/text_sign_up"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorTextLink"
+                android:paddingLeft="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sign_up" />
+                android:text="@string/sign_up_underline" />
 
         </LinearLayout>
     </LinearLayout>

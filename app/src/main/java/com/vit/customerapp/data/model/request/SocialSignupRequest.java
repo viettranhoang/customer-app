@@ -1,4 +1,4 @@
-package com.vit.customerapp.data.model;
+package com.vit.customerapp.data.model.request;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

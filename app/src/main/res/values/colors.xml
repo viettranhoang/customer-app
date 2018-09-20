@@ -4,13 +4,20 @@
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="darkGreyBlue">#2c3e58</color>
     <color name="white">#ffffff</color>
     <color name="black">#000</color>
     <color name="colorFb">#3b5998</color>
     <color name="colorGmail">#db4437</color>
     <color name="colorHintInput">#29ffc6</color>
     <color name="colorTextError">#d10003</color>
+    <color name="colorTextLink">#c31432</color>
     
     <color name="gradientEndColor">#94291e</color>
     <color name="gradientStartColor">#ec223b</color>
+
+    <color name="lightGreenBlue">#50ffc6</color>
+    <color name="aquaMarineTwo">#46e4b1</color>
+    <color name="aquaMarine">#4beaea</color>
+
 </resources>

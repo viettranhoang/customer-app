@@ -18,11 +18,12 @@
     <string name="input_password_confirm">Confirm Password</string>
     <string name="or">-OR-</string>
     <string name="sign_up">Sign Up</string>
-    <string name="already_have_account">Already have a HNAI Account? Sign In</string>
+    <string name="already_have_account">Already have a HNAI Account?</string>
     <string name="password_confirm_is_not_true">Password confirm is not true</string>
     <string name="gmail">GMAIL</string>
     <string name="facebook">FACEBOOK</string>
     <string name="password_not_match">Password not match</string>
+    <string name="sign_in_underline"><u>Sign In</u></string>
 
     <!--Sign In Activity-->
     <string name="input_phone">Phone number</string>
@@ -30,6 +31,7 @@
     <string name="welcome_back">Welcome Back,</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="dont_have_account">Don\'t have an account?  </string>
+    <string name="sign_up_underline"><u>Sign Up</u></string>
 
     <!--Verify Phone Activity-->
     <string name="verify_phone_number">Verify phone number</string>
@@ -41,11 +43,20 @@
     <string name="text_invalid_verification_code">Invalid cerification code!</string>
     <string name="button_continue">Continue</string>
     <string name="button_verify">Verify</string>
-    
+
     <!--Forgot Password Activity-->
     <string name="forgot_password">Forgot Password</string>
     <string name="content_forgot_password">Enter your phone number in the field below to receive your valication code</string>
     <string name="send_validation_code">Send Validation Code</string>
-    <string name="we'll_send_you_a_code">We\'ll send you a code to reset your \n Password at</string>
+    <string name="well_send_you_a_code">We\'ll send you a code to reset your \n Password at</string>
+
+    <!--New Password Setting Activity-->
+    <string name="new_password_setting">New Password Setting</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="submit">Submit</string>
+    <string name="successfully">Successfully!</string>
+    <string name="password_updated_successfully">Password updated successfully.\n Please use your new password to login into the app</string>
+    <string name="login">Login</string>
 
 </resources>

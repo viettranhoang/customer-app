@@ -81,22 +81,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@drawable/round_corners_gradient"
-            android:text="@string/button_continue"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18dp" />
+            style="@style/ButtonGradient"
+            android:text="@string/button_continue" />
 
         <Button
             android:id="@+id/button_verify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@drawable/round_gradient"
+            style="@style/ButtonGradient"
             android:text="@string/button_verify"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18dp"
             android:visibility="gone" />
 
         <TextView

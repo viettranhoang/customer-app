@@ -2,16 +2,8 @@ package com.vit.customerapp.ui.feature.signup;
 
 import android.app.AlertDialog;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -20,32 +12,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vit.customerapp.R;
-import com.vit.customerapp.data.model.RegisterRequest;
-import com.vit.customerapp.data.model.RegisterResponse;
-import com.vit.customerapp.data.model.SocialSignupRequest;
-import com.vit.customerapp.data.model.VerifyPhoneRequest;
-import com.vit.customerapp.data.model.VerifyPhoneResponse;
-import com.vit.customerapp.data.model.VerifyPincodeResponse;
+import com.vit.customerapp.data.model.response.BaseResponse;
+import com.vit.customerapp.data.model.request.RegisterRequest;
+import com.vit.customerapp.data.model.response.RegisterResponse;
+import com.vit.customerapp.data.model.request.SocialSignupRequest;
+import com.vit.customerapp.data.model.request.VerifyPhoneRequest;
+import com.vit.customerapp.data.model.response.VerifyPhoneResponse;
+import com.vit.customerapp.data.model.request.VerifyPincodeRequest;
 import com.vit.customerapp.data.remote.APIService;
 import com.vit.customerapp.data.remote.ApiUtils;
+import com.vit.customerapp.ui.base.BaseActivity;
 import com.vit.customerapp.ui.feature.signup.adapter.CountrySpinnerAdapter;
+import com.vit.customerapp.ui.util.Utils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VerifyPhoneActivity extends AppCompatActivity {
+public class VerifyPhoneActivity extends BaseActivity {
 
     private static final String TAG = VerifyPhoneActivity.class.getSimpleName();
-
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-
-    @BindView(R.id.text_toolbar)
-    TextView mToolbarTitle;
 
     @BindView(R.id.input_phone_number)
     EditText mInputPhone;
@@ -86,18 +74,17 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     private SocialSignupRequest mSocialRequest;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-            w.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
-        setContentView(R.layout.activity_verify_phone);
-        ButterKnife.bind(this);
+    protected int getLayoutId() {
+        return R.layout.activity_verify_phone;
+    }
 
-        initActionBar();
+    @Override
+    protected int getTitleToolbarId() {
+        return R.string.verify_phone_number;
+    }
 
+    @Override
+    protected void initView() {
         mSpinnerCountry.setAdapter(new CountrySpinnerAdapter(this));
 
         mAPIService = ApiUtils.getAPIService();
@@ -105,23 +92,15 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         mRegisterRequest = (RegisterRequest) getIntent().getSerializableExtra("registerRequest");
 
         mSocialRequest = (SocialSignupRequest) getIntent().getSerializableExtra("socialRequest");
-
-        Toast.makeText(this, mSocialRequest.getSocialToken(), Toast.LENGTH_SHORT).show();
     }
 
-    private void initActionBar() {
-        mToolbarTitle.setText(R.string.verify_phone_number);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_left_black));
-    }
 
     @OnClick(R.id.button_continue)
     void onClickContinue() {
         if (!mInputPhone.getText().toString().isEmpty()) {
             String phone = mSpinnerCountry.getSelectedItem() + mInputPhone.getText().toString();
-            VerifyPhoneRequest request = new VerifyPhoneRequest(phone, "VN", "REGISTER", "CUSTOMER");
+            VerifyPhoneRequest request = new VerifyPhoneRequest(phone, "VN",
+                    Utils.REQUEST_TYPE_REGISTER, Utils.APP_TYPE_CUSTOMER);
             postVerifyPhone(request);
             mRegisterRequest.setPhoneNumber(phone);
             mRegisterRequest.setCountryCode("VN");
@@ -132,7 +111,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     void onClickVerify() {
         if (!mInputCode.getText().toString().isEmpty() && !mRegisterRequest.getVerifyRequestId().isEmpty()) {
             Toast.makeText(this, mRegisterRequest.getVerifyRequestId(), Toast.LENGTH_SHORT).show();
-            postVerifyPincode(mRegisterRequest.getVerifyRequestId(), mInputCode.getText().toString());
+            postVerifyPincode(new VerifyPincodeRequest(mRegisterRequest.getVerifyRequestId(), mInputCode.getText().toString()));
         }
     }
 
@@ -140,7 +119,6 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     // ---------------------------------------------------------------------------------------------
     // PRIBATE METHODS
     // ---------------------------------------------------------------------------------------------
-
 
     private void postVerifyPhone(VerifyPhoneRequest request) {
         mAPIService.postVerifyPhoneCall(request)
@@ -168,15 +146,15 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                 });
     }
 
-    private void postVerifyPincode(String verifyingRequestId, String pincode) {
-        mAPIService.postVerifyPincode(verifyingRequestId, pincode)
-                .enqueue(new Callback<VerifyPincodeResponse>() {
+    private void postVerifyPincode(VerifyPincodeRequest request) {
+        mAPIService.postVerifyPincode(request)
+                .enqueue(new Callback<BaseResponse>() {
                     @Override
-                    public void onResponse(Call<VerifyPincodeResponse> call, Response<VerifyPincodeResponse> response) {
+                    public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                         if (response.isSuccessful()) {
                             if (response.body().getStatus().equals("success")) {
 
-                                mRegisterRequest.setVerifyRequestId(verifyingRequestId);
+                                mRegisterRequest.setVerifyRequestId(request.getVerifyRequestId());
                                 postRegister(mRegisterRequest);
                                 Toast.makeText(VerifyPhoneActivity.this, "postVerifyPincode: success", Toast.LENGTH_SHORT).show();
                             } else {
@@ -188,7 +166,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<VerifyPincodeResponse> call, Throwable t) {
+                    public void onFailure(Call<BaseResponse> call, Throwable t) {
 
                     }
                 });

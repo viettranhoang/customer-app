@@ -38,8 +38,10 @@ import com.google.api.services.people.v1.PeopleService;
 import com.google.api.services.people.v1.model.Gender;
 import com.google.api.services.people.v1.model.Person;
 import com.vit.customerapp.R;
-import com.vit.customerapp.data.model.RegisterRequest;
-import com.vit.customerapp.data.model.SocialSignupRequest;
+import com.vit.customerapp.data.model.request.RegisterRequest;
+import com.vit.customerapp.data.model.request.SocialSignupRequest;
+import com.vit.customerapp.ui.feature.signin.SignInActivity;
+import com.vit.customerapp.ui.util.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +58,10 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    private static final String TAG = SignUpActivity.class.getSimpleName();
+
+    private static final int RC_SIGN_IN = 001;
 
     @BindView(R.id.layout_sign_out)
     LinearLayout mLayoutSignOut;
@@ -89,13 +95,6 @@ public class SignUpActivity extends AppCompatActivity {
     // FIELDS
     // ---------------------------------------------------------------------------------------------
 
-    private static final String TAG = SignUpActivity.class.getSimpleName();
-
-    private static final String SOCIAL_TYPE_GMAIL = "GMAIL";
-    private static final String SOCIAL_TYPE_FACEBOOK = "FACEBOOK";
-
-    private static final int RC_SIGN_IN = 001;
-
     private GoogleSignInClient mGoogleSignInClient;
 
     private RegisterRequest mRegisterRequest;
@@ -114,7 +113,6 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
@@ -157,15 +155,20 @@ public class SignUpActivity extends AppCompatActivity {
                 Arrays.asList("public_profile", "email", "user_gender"));
     }
 
+    @OnClick(R.id.text_sign_in)
+    void onClickSignIn() {
+        startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+    }
+
     @OnTextChanged({R.id.input_first_name, R.id.input_last_name, R.id.input_email,
             R.id.input_password, R.id.input_password_confirm})
     void onInputChanged() {
+        mTextPasswordNotMatch.setVisibility(View.INVISIBLE);
         if (!isAllInputEmpty()) {
             mLayoutSignOut.setAlpha(1);
         } else {
             mLayoutSignOut.setAlpha((float) 0.5);
         }
-
     }
 
 
@@ -220,7 +223,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             mSocialSignupRequest = new SocialSignupRequest(
                                     avatar, email, lastName, firstName,
-                                    token, SOCIAL_TYPE_FACEBOOK, id);
+                                    token, Utils.SOCIAL_TYPE_FACEBOOK, id);
 
                             mSocialSignupRequest.setGender(!gender.isEmpty() ? gender : "");
 
@@ -363,7 +366,7 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     SocialSignupRequest request = new SocialSignupRequest(mAcount.getPhotoUrl().toString(),
                             mAcount.getEmail(), mAcount.getFamilyName(), mAcount.getGivenName(),
-                            mAcount.getIdToken(), SOCIAL_TYPE_GMAIL, mAcount.getId());
+                            mAcount.getIdToken(), Utils.SOCIAL_TYPE_GMAIL, mAcount.getId());
                     if (meProfile != null) {
                         List<Gender> genders = meProfile.getGenders();
                         if (genders != null && genders.size() > 0) {
