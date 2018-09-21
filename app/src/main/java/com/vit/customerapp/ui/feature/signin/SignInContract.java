@@ -15,10 +15,8 @@ import com.vit.customerapp.ui.base.BaseView;
 
 public class SignInContract {
 
-    interface View extends BaseView{
+    interface View extends BaseView<Presenter>{
         void onLoginSuccess(RegisterResponse response);
-
-        void onSocialSignInSuccess(BaseResponse response);
 
         void onLoginError(Throwable t);
 

@@ -23,8 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.feature.main.MainActivity" />
-        <activity
-            android:name=".ui.feature.signup.VerifyPhoneActivity" />
+        <activity android:name=".ui.feature.verifyphone.VerifyPhoneActivity" />
         <activity
             android:name=".ui.feature.signup.SignUpActivity"
             android:theme="@style/NoActionBar" />
@@ -55,8 +54,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.feature.password.ForgotPasswordActivity" />
-        <activity android:name=".ui.feature.password.NewPasswordSettingActivity"></activity>
+        <activity android:name=".ui.feature.password.NewPasswordSettingActivity" />
+        <activity android:name=".ui.feature.EmptyActivity"></activity>
     </application>
 
 </manifest>

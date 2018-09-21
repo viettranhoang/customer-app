@@ -41,8 +41,8 @@ public class SocialSignupRequest implements Serializable{
     @SerializedName("social_id")
     private String socialId;
 
-    public SocialSignupRequest(String avatar, String email, String lastName,
-                               String firstName, String socialToken, String socialType, String socialId) {
+    public SocialSignupRequest(String avatar, String email, String lastName, String firstName,
+                               String socialToken, String socialType, String socialId, String countryCode) {
         this.avatar = avatar;
         this.email = email;
         this.lastName = lastName;
@@ -50,6 +50,7 @@ public class SocialSignupRequest implements Serializable{
         this.socialToken = socialToken;
         this.socialType = socialType;
         this.socialId = socialId;
+        this.countryCode = countryCode;
     }
 
     public String getVerifyRequestId() {

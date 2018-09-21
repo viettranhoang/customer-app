@@ -1,4 +1,4 @@
-package com.vit.customerapp.ui.feature.signup.adapter;
+package com.vit.customerapp.ui.feature.verifyphone.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

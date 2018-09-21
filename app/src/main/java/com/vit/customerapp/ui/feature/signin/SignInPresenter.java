@@ -45,6 +45,7 @@ public class SignInPresenter implements SignInContract.Presenter {
 
     public SignInPresenter(SignInContract.View mView) {
         this.mView = mView;
+        this.mView.setPresenter(this);
     }
 
     @Override
@@ -67,16 +68,16 @@ public class SignInPresenter implements SignInContract.Presenter {
     @Override
     public void postSocialSignIn(SocialSigninRequest request) {
         ApiUtils.getAPIService().postSocialSignin(request)
-                .enqueue(new Callback<BaseResponse>() {
+                .enqueue(new Callback<RegisterResponse>() {
                     @Override
-                    public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                    public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                         if (response.isSuccessful() && response.body() != null) {
-                            mView.onSocialSignInSuccess(response.body());
+                            mView.onLoginSuccess(response.body());
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<BaseResponse> call, Throwable t) {
+                    public void onFailure(Call<RegisterResponse> call, Throwable t) {
                         mView.onSocialSignInError(t);
                     }
                 });
@@ -105,11 +106,10 @@ public class SignInPresenter implements SignInContract.Presenter {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (mCallbackManager != null) {
+            mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        }
         if (requestCode == RC_SIGN_IN) {
-            if (mCallbackManager != null) {
-                mCallbackManager.onActivityResult(requestCode, resultCode, data);
-            }
-
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);

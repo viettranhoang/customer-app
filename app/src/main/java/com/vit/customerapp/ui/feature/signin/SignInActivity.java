@@ -1,5 +1,6 @@
 package com.vit.customerapp.ui.feature.signin;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -13,11 +14,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.vit.customerapp.R;
 import com.vit.customerapp.data.model.request.LoginRequest;
 import com.vit.customerapp.data.model.request.SocialSigninRequest;
-import com.vit.customerapp.data.model.response.BaseResponse;
 import com.vit.customerapp.data.model.response.RegisterResponse;
-import com.vit.customerapp.ui.feature.main.MainActivity;
-import com.vit.customerapp.ui.feature.password.ForgotPasswordActivity;
+import com.vit.customerapp.ui.feature.EmptyActivity;
+import com.vit.customerapp.ui.feature.password.NewPasswordSettingActivity;
 import com.vit.customerapp.ui.feature.signup.SignUpActivity;
+import com.vit.customerapp.ui.feature.verifyphone.VerifyPhoneActivity;
 import com.vit.customerapp.ui.util.Utils;
 
 import butterknife.BindView;
@@ -27,7 +28,9 @@ import butterknife.OnTextChanged;
 
 public class SignInActivity extends AppCompatActivity implements SignInContract.View {
 
-    private static final String TAG = SignUpActivity.class.getSimpleName();
+    private static final String TAG = SignInActivity.class.getSimpleName();
+
+    public static final int RC_RESET_PASSWORD = 011;
 
     @BindView(R.id.input_phone)
     TextInputEditText mInputPhone;
@@ -41,14 +44,16 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
     private SignInContract.Presenter mPresenter;
 
+    private String mVerifyRequestId;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
 
-        mPresenter = new SignInPresenter(this);
-
+        new SignInPresenter(this);
     }
 
     @Override
@@ -56,25 +61,34 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
         super.onActivityResult(requestCode, resultCode, data);
 
         mPresenter.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_RESET_PASSWORD) {
+            if(resultCode == Activity.RESULT_OK) {
+                mVerifyRequestId = data.getStringExtra(Utils.EXTRA_VERIFY_REQUEST_ID);
+                Toast.makeText(this, "Result: " + mVerifyRequestId, Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(this, NewPasswordSettingActivity.class);
+                intent.putExtra(Utils.EXTRA_VERIFY_REQUEST_ID, mVerifyRequestId);
+                startActivity(intent);
+            } else {
+                //không thành công, không có data trả về.
+            }
+        }
+    }
+
+
+    @Override
+    public void setPresenter(SignInContract.Presenter presenter) {
+        mPresenter = presenter;
     }
 
     @Override
     public void onLoginSuccess(RegisterResponse response) {
         if (response.getStatus().equals(Utils.STATUS_SUCCESS)) {
             Toast.makeText(SignInActivity.this, "Login successfully!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+            startActivity(new Intent(SignInActivity.this, EmptyActivity.class));
         } else {
             Toast.makeText(SignInActivity.this, response.getStatus() + response.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onSocialSignInSuccess(BaseResponse response) {
-        if (response.getStatus().equals(Utils.STATUS_SUCCESS)) {
-            Toast.makeText(SignInActivity.this, "Login successfully!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(SignInActivity.this, MainActivity.class));
-        } else {
-            Toast.makeText(SignInActivity.this, response.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -111,7 +125,9 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
     @OnClick(R.id.text_forgot_password)
     void onClickForgotPassword() {
-        startActivity(new Intent(this, ForgotPasswordActivity.class));
+        Intent intent = new Intent(SignInActivity.this, VerifyPhoneActivity.class);
+        intent.putExtra(Utils.EXTRA_REQUEST_TYPE, Utils.REQUEST_TYPE_RESET_PASS);
+        startActivityForResult(intent, RC_RESET_PASSWORD);
     }
 
     @OnClick(R.id.button_fb)
@@ -146,4 +162,5 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
         }
         return false;
     }
+
 }

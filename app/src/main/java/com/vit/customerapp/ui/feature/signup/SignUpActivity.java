@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -40,7 +41,9 @@ import com.google.api.services.people.v1.model.Person;
 import com.vit.customerapp.R;
 import com.vit.customerapp.data.model.request.RegisterRequest;
 import com.vit.customerapp.data.model.request.SocialSignupRequest;
+import com.vit.customerapp.data.model.response.RegisterResponse;
 import com.vit.customerapp.ui.feature.signin.SignInActivity;
+import com.vit.customerapp.ui.feature.verifyphone.VerifyPhoneActivity;
 import com.vit.customerapp.ui.util.Utils;
 
 import org.json.JSONException;
@@ -57,11 +60,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
 
     private static final String TAG = SignUpActivity.class.getSimpleName();
 
     private static final int RC_SIGN_IN = 001;
+    public static final int RC_REGISTER = 002;
+    public static final int RC_SOCIAL_SIGNUP = 003;
 
     @BindView(R.id.layout_sign_out)
     LinearLayout mLayoutSignOut;
@@ -90,6 +95,8 @@ public class SignUpActivity extends AppCompatActivity {
     @BindView(R.id.button_fb)
     LinearLayout mButtonFacebook;
 
+    private SignUpContract.Presenter mPresenter;
+
 
     // ---------------------------------------------------------------------------------------------
     // FIELDS
@@ -97,14 +104,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     private GoogleSignInClient mGoogleSignInClient;
 
-    private RegisterRequest mRegisterRequest;
-
     private WeakReference<SignUpActivity> mWeakAct = new WeakReference<>(this);
 
     private SocialSignupRequest mSocialSignupRequest;
-
-    private CallbackManager mCallbackManager;
-
 
     // ---------------------------------------------------------------------------------------------
     // OVERRIDE METHODS
@@ -118,7 +120,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         initGoogleSignIn();
 
-        initFacebookSignIn();
+
+        new SignUpPresenter(this);
 
     }
 
@@ -131,16 +134,54 @@ public class SignUpActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
+        if (requestCode == RC_REGISTER) {
+            if (resultCode == Activity.RESULT_OK) {
+                String phoneNumber = data.getStringExtra(Utils.EXTRA_REQUEST_TYPE);
+                String verifyRequestId = data.getStringExtra(Utils.EXTRA_VERIFY_REQUEST_ID);
+                Toast.makeText(this, "Activity Result: " + phoneNumber + verifyRequestId, Toast.LENGTH_LONG).show();
 
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+                register(phoneNumber, verifyRequestId);
+            }
+        }
+        if (requestCode == RC_SOCIAL_SIGNUP) {
+            if (resultCode == Activity.RESULT_OK) {
+                String phoneNumber = data.getStringExtra(Utils.EXTRA_REQUEST_TYPE);
+                String verifyRequestId = data.getStringExtra(Utils.EXTRA_VERIFY_REQUEST_ID);
+                Toast.makeText(this, "Activity Result: " + phoneNumber + verifyRequestId, Toast.LENGTH_LONG).show();
+
+                socialSignup(phoneNumber, verifyRequestId);
+            }
+        }
+
+        mPresenter.onActivityResult(requestCode, resultCode, data);
     }
+
+    @Override
+    public void setPresenter(SignUpContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void onRegisterSuccess(RegisterResponse response) {
+        if (response.getStatus().equals("success")) {
+            Utils.showSuccessfullyDialog(SignUpActivity.this, getString(R.string.sign_up_successfully));
+        } else {
+            Toast.makeText(SignUpActivity.this, response.getCode() + "\n" +
+                    response.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onFacebookSignInSuccess(SocialSignupRequest request) {
+        mSocialSignupRequest = request;
+        jumpVerifyActivity(this, RC_SOCIAL_SIGNUP);
+    }
+
 
     @OnClick(R.id.button_sign_up)
     void onClickSignUp() {
         if (isInfoAlready()) {
-            Intent intent = new Intent(SignUpActivity.this, VerifyPhoneActivity.class);
-            intent.putExtra("registerRequest", mRegisterRequest);
-            startActivity(intent);
+            jumpVerifyActivity(this, RC_REGISTER);
         }
     }
 
@@ -151,8 +192,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     @OnClick(R.id.button_fb)
     void onClickFacebook() {
-        LoginManager.getInstance().logInWithReadPermissions(SignUpActivity.this,
-                Arrays.asList("public_profile", "email", "user_gender"));
+        mPresenter.signInFacebook(SignUpActivity.this);
     }
 
     @OnClick(R.id.text_sign_in)
@@ -176,71 +216,6 @@ public class SignUpActivity extends AppCompatActivity {
     // PRIVATE METHODS
     // ---------------------------------------------------------------------------------------------
 
-    private void initFacebookSignIn() {
-        mCallbackManager = CallbackManager.Factory.create();
-
-        LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                getFacebookProfile(loginResult);
-
-            }
-
-            @Override
-            public void onCancel() {
-                Log.d(TAG, "onCancel: Login canceled");
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.e(TAG, "onError: Login failed");
-            }
-        });
-    }
-
-    private void getFacebookProfile(LoginResult loginResult) {
-        Profile profile = Profile.getCurrentProfile();
-
-        String id = loginResult.getAccessToken().getUserId();
-        String token = loginResult.getAccessToken().getToken();
-        String firstName = profile.getFirstName();
-        String lastName = profile.getLastName();
-        String avatar = profile.getProfilePictureUri(300, 300).toString();
-
-        GraphRequest request = GraphRequest.newMeRequest(
-                loginResult.getAccessToken(),
-                new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(
-                            JSONObject object,
-                            GraphResponse response) {
-
-                        Log.v("LoginActivity Response ", response.toString());
-
-                        try {
-                            String email = object.getString("email");
-                            String gender = object.getString("gender");
-
-                            mSocialSignupRequest = new SocialSignupRequest(
-                                    avatar, email, lastName, firstName,
-                                    token, Utils.SOCIAL_TYPE_FACEBOOK, id);
-
-                            mSocialSignupRequest.setGender(!gender.isEmpty() ? gender : "");
-
-                            SignUpActivity mainAct = mWeakAct.get();
-                            jumpVerifyActivity(mainAct, mSocialSignupRequest);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-        Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name,email,gender");
-        request.setParameters(parameters);
-        request.executeAsync();
-    }
-
     private void initGoogleSignIn() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.server_client_id))
@@ -260,7 +235,7 @@ public class SignUpActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
-            new GetGoogleProfileDetails(account, mWeakAct, TAG).execute();
+            new GetGoogleProfileDetails(account, mWeakAct, TAG, mSocialSignupRequest).execute();
         } catch (ApiException e) {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
@@ -278,7 +253,6 @@ public class SignUpActivity extends AppCompatActivity {
                 mTextPasswordNotMatch.setVisibility(View.VISIBLE);
                 return false;
             }
-            mRegisterRequest = new RegisterRequest(password, email, lastName, firstName);
             return true;
         }
         return false;
@@ -296,12 +270,25 @@ public class SignUpActivity extends AppCompatActivity {
         return false;
     }
 
-    private void jumpVerifyActivity(Activity activity, SocialSignupRequest request) {
-        Intent intent = new Intent(activity, VerifyPhoneActivity.class);
-        intent.putExtra("socialRequest", request);
-        activity.startActivity(intent);
+    private void jumpVerifyActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(SignUpActivity.this, VerifyPhoneActivity.class);
+        intent.putExtra(Utils.EXTRA_REQUEST_TYPE, Utils.REQUEST_TYPE_REGISTER);
+        startActivityForResult(intent, requestCode);
     }
 
+    private void socialSignup(String phoneNumber, String verifyRequestId) {
+        mSocialSignupRequest.setPhoneNumber(phoneNumber);
+        mSocialSignupRequest.setVerifyRequestId(verifyRequestId);
+
+        mPresenter.postSocialSignup(mSocialSignupRequest);
+    }
+
+    private void register(String phoneNumber, String verifyRequestId) {
+        RegisterRequest request = new RegisterRequest(mInputFirstName.getText().toString(),
+                mInputLastName.getText().toString(), mInputEmail.getText().toString(),
+                phoneNumber, mInputPassword.getText().toString(), "VN", verifyRequestId);
+        mPresenter.postRegister(request);
+    }
 
     // ---------------------------------------------------------------------------------------------
     // CLASSES
@@ -314,11 +301,14 @@ public class SignUpActivity extends AppCompatActivity {
         private WeakReference<SignUpActivity> mWeakAct;
         private String TAG;
         private GoogleSignInAccount mAcount;
+        private SocialSignupRequest mRequest;
 
-        GetGoogleProfileDetails(GoogleSignInAccount account, WeakReference<SignUpActivity> weakAct, String TAG) {
+        GetGoogleProfileDetails(GoogleSignInAccount account, WeakReference<SignUpActivity> weakAct, String TAG, SocialSignupRequest request) {
             this.TAG = TAG;
             this.mWeakAct = weakAct;
             this.mAcount = account;
+            this.mRequest = request;
+
             GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(
                     this.mWeakAct.get(), Collections.singleton(Scopes.PROFILE));
             credential.setSelectedAccount(
@@ -364,24 +354,23 @@ public class SignUpActivity extends AppCompatActivity {
                 } else if (mAuthError == 2) {
                     Log.w(TAG, "API io error");
                 } else {
-                    SocialSignupRequest request = new SocialSignupRequest(mAcount.getPhotoUrl().toString(),
+                    mRequest = new SocialSignupRequest(mAcount.getPhotoUrl().toString(),
                             mAcount.getEmail(), mAcount.getFamilyName(), mAcount.getGivenName(),
-                            mAcount.getIdToken(), Utils.SOCIAL_TYPE_GMAIL, mAcount.getId());
+                            mAcount.getIdToken(), Utils.SOCIAL_TYPE_GMAIL, mAcount.getId(), "VN");
                     if (meProfile != null) {
                         List<Gender> genders = meProfile.getGenders();
                         if (genders != null && genders.size() > 0) {
                             String gender = genders.get(0).getValue();
                             Log.d(TAG, "onPostExecute gender: " + gender);
-                            request.setGender(gender);
+                            mRequest.setGender(gender);
 
                         } else {
                             Log.d(TAG, "onPostExecute no gender if set to private ");
                         }
                     } else {
-                        request.setGender("MALE");
+                        mRequest.setGender("MALE");
                     }
-                    mainAct.jumpVerifyActivity(mainAct, request);
-
+                    mainAct.jumpVerifyActivity(mainAct, RC_SOCIAL_SIGNUP);
                 }
             }
         }

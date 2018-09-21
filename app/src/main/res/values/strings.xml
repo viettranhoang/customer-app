@@ -24,6 +24,7 @@
     <string name="facebook">FACEBOOK</string>
     <string name="password_not_match">Password not match</string>
     <string name="sign_in_underline"><u>Sign In</u></string>
+    <string name="sign_up_successfully">Sign up successfully.\n Please use your account to login into the app</string>
 
     <!--Sign In Activity-->
     <string name="input_phone">Phone number</string>

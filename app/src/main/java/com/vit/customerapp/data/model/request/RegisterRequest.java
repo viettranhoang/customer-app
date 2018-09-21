@@ -30,11 +30,15 @@ public class RegisterRequest implements Serializable{
     @SerializedName("first_name")
     private String firstName;
 
-    public RegisterRequest(String password, String email, String lastName, String firstName) {
-        this.password = password;
-        this.email = email;
-        this.lastName = lastName;
+    public RegisterRequest(String firstName, String lastName, String email, String phoneNumber,
+                           String password, String countryCode, String verifyRequestId) {
         this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.countryCode = countryCode;
+        this.verifyRequestId = verifyRequestId;
     }
 
     public String getVerifyRequestId() {

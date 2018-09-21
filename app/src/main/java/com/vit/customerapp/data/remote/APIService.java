@@ -1,5 +1,6 @@
 package com.vit.customerapp.data.remote;
 
+import com.vit.customerapp.data.model.request.SocialSignupRequest;
 import com.vit.customerapp.data.model.response.BaseResponse;
 import com.vit.customerapp.data.model.request.LoginRequest;
 import com.vit.customerapp.data.model.request.RegisterRequest;
@@ -26,7 +27,10 @@ public interface APIService {
     Call<RegisterResponse> postRegisterResponse(@Body RegisterRequest registerRequest);
 
     @POST("api/user/social_login")
-    Call<BaseResponse> postSocialSignin(@Body SocialSigninRequest socialSignupRequest);
+    Call<RegisterResponse> postSocialSignin(@Body SocialSigninRequest socialSigninRequest);
+
+    @POST("api/user/social_signup")
+    Call<RegisterResponse> postSocialSignup(@Body SocialSignupRequest socialSignupRequest);
 
     @POST("api/user/reset_password")
     Call<BaseResponse> postResetPassword(@Body ResetPasswordRequest resetPasswordRequest);
