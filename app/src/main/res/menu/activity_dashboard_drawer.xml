@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/nav_appointment"
+            android:icon="@drawable/ic_appointment"
+            android:title="@string/my_appointment" />
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_account"
+            android:title="Account" />
+        <item
+            android:id="@+id/nav_term"
+            android:icon="@drawable/ic_term"
+            android:title="@string/term_of_use" />
+
+        <item
+            android:id="@+id/nav_policy"
+            android:icon="@drawable/ic_policy"
+            android:title="@string/privacy_policy" />
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_faq"
+            android:title="@string/faq" />
+        <item
+            android:id="@+id/nav_support"
+            android:icon="@drawable/ic_support"
+            android:title="@string/customer_support" />
+
+
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/log_out" />
+
+        </menu>
+    </item>
+
+    <item android:title="HNail v1.1"/>
+
+
+
+</menu>

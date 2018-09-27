@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.feature.menu.DashboardActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar"/>
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_hand"
+            android:layout_width="37.5dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:text="@string/just_a_few_taps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:id="@+id/layout_book_service"
+            style="@style/button_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_book_service"
+                style="@style/text_huge"
+                android:text="@string/book_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/a_hnail_service_for_one_people"
+                android:textColor="@color/white"
+                android:alpha="0.8"
+                android:layout_below="@id/text_book_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_width="10dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_book_family"
+            style="@style/button_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_book_family"
+                style="@style/text_huge"
+                android:text="@string/book_family_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/a_hnail_service_for_two_people"
+                android:textColor="@color/white"
+                android:alpha="0.8"
+                android:layout_below="@id/text_book_family"
+                android:layout_marginRight="35dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_width="10dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_rebook"
+            style="@style/button_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_rebook"
+                style="@style/text_huge"
+                android:text="@string/rebook_technician"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/request_a_technician_from_one"
+                android:textColor="@color/white"
+                android:alpha="0.8"
+                android:layout_marginRight="35dp"
+                android:layout_below="@id/text_rebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_width="10dp"
+                android:layout_height="20dp" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

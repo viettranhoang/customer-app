@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.vit.customerapp.R;
+import com.vit.customerapp.ui.feature.EmptyActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +27,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @BindView(R.id.text_toolbar)
     TextView mToolbarTitle;
+
+    @BindView(R.id.image_toolbar)
+    protected ImageView mImageToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mToolbarTitle.setText(getTitleToolbarId());
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_left_black));
     }
