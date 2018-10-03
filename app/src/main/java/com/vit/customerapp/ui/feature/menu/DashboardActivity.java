@@ -1,5 +1,6 @@
 package com.vit.customerapp.ui.feature.menu;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -20,9 +21,11 @@ import android.view.MenuItem;
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
 import com.vit.customerapp.ui.feature.EmptyActivity;
+import com.vit.customerapp.ui.feature.choose_service.ChooseServiceActivity;
 
 import butterknife.BindDrawable;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class DashboardActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -133,5 +136,18 @@ public class DashboardActivity extends BaseActivity implements NavigationView.On
         mToggle.onConfigurationChanged(newConfig);
     }
 
+    @OnClick(R.id.layout_book_service)
+    void onClickBookService() {
+        startActivity(new Intent(this, ChooseServiceActivity.class));
+    }
 
+    @OnClick(R.id.layout_book_family)
+    void onClickBookFamily() {
+
+    }
+
+    @OnClick(R.id.layout_rebook)
+    void onClickRebook() {
+
+    }
 }

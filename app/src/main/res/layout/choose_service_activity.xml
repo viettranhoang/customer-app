@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.feature.choose_service.ChooseServiceActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layout_total">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.vit.customerapp.ui.feature.choose_service.ChooseServiceView
+                android:id="@+id/view_manicure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.vit.customerapp.ui.feature.choose_service.ChooseServiceView
+                android:id="@+id/view_pedicure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.vit.customerapp.ui.feature.choose_service.ChooseServiceView
+                android:id="@+id/view_packages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.vit.customerapp.ui.feature.choose_service.ChooseServiceView
+                android:id="@+id/view_add_on"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/layout_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.95"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/text_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/total"
+            android:textColor="@color/gray_dark"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/text_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/text_total"
+            android:text="95"
+            android:textColor="@color/gray_dark"
+            android:textSize="26sp" />
+
+        <Button
+            style="@style/ButtonGradient"
+            android:clickable="true"
+            android:foreground="@drawable/ripple_effect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/button_continue" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

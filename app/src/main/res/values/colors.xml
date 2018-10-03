@@ -5,9 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="darkGreyBlue">#2c3e58</color>
-    <color name="darkGreyBlueWhite">#7f96b7</color>
     <color name="white">#ffffff</color>
     <color name="black">#000</color>
+    <color name="gray_dark">#222222</color>
     <color name="colorFb">#3b5998</color>
     <color name="colorGmail">#db4437</color>
     <color name="colorHintInput">#29ffc6</color>
@@ -20,5 +20,6 @@
     <color name="lightGreenBlue">#50ffc6</color>
     <color name="aquaMarineTwo">#46e4b1</color>
     <color name="aquaMarine">#4beaea</color>
+    <color name="pinkishGrey">#cbcbff</color>
 
 </resources>

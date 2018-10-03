@@ -85,4 +85,14 @@
     <string name="a_hnail_service_for_two_people">A HNail service for two people with two technicians</string>
     <string name="request_a_technician_from_one">Request a Technician from one of your previous Technician</string>
     <string name="just_a_few_taps">Just a few Taps, We do the rest.</string>
+    
+    <!--Choose Service Screen-->
+    <string name="manicure">Manicure</string>
+    <string name="pedicure">Pedicure</string>
+    <string name="packages">Packages</string>
+    <string name="add_on">Add on</string>
+    <string name="regular_polish_classic">Regular Polish - Classic</string>
+    <string name="approx_15mins_remove_nail">(Approx. 15mins): Remove nail polish, shaping &amp; buffing, cuticle care, polish of your choice.</string>
+    <string name="regular_polish_deluxe">Regular Polish - Deluxe</string>
+    <string name="total">Total $</string>
 </resources>
