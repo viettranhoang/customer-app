@@ -56,7 +56,6 @@
         </activity>
         <activity android:name=".ui.feature.password.NewPasswordSettingActivity" />
         <activity android:name=".ui.feature.EmptyActivity" />
-        <activity android:name=".ui.feature.menu.MenuActivity" />
         <activity
             android:name=".ui.feature.menu.DashboardActivity"
             android:label="@string/title_activity_dashboard"

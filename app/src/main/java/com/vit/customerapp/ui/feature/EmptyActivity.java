@@ -1,5 +1,7 @@
 package com.vit.customerapp.ui.feature;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,15 +18,13 @@ import butterknife.BindView;
 
 public class EmptyActivity extends BaseActivity{
 
-    @BindView(R.id.layout_drawer)
-    DrawerLayout drawerLayout;
-
-    private ActionBarDrawerToggle drawerToggle;
+    public static void moveLoginActivity(Activity activity) {
+        Intent intent = new Intent(activity, EmptyActivity.class);
+        activity.startActivity(intent);
+    }
 
     @Override
     protected void initView() {
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(drawerToggle);
     }
 
     @Override
@@ -45,26 +45,7 @@ public class EmptyActivity extends BaseActivity{
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(drawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
-        drawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
-    }
 
 
 }

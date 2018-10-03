@@ -1,5 +1,7 @@
 package com.vit.customerapp.ui.base;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.feature.EmptyActivity;
@@ -23,10 +26,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected static final String TAG = BaseActivity.class.getSimpleName();
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    protected Toolbar mToolbar;
 
     @BindView(R.id.text_toolbar)
-    TextView mToolbarTitle;
+    protected TextView mToolbarTitle;
 
     @BindView(R.id.image_toolbar)
     protected ImageView mImageToolbar;
@@ -66,12 +69,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getTitleToolbarId();
 
-    private void initActionBar() {
+    public void initActionBar() {
         mToolbarTitle.setText(getTitleToolbarId());
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeAsUpIndicator(getResources().getDrawable(R.drawable.ic_left_black));
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_left);
+    }
+
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

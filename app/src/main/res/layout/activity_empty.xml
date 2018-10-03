@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_drawer"
@@ -7,98 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.feature.EmptyActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <include layout="@layout/toolbar"/>
 
-        <include layout="@layout/toolbar"/>
-    </LinearLayout>
-
-    <android.support.design.widget.NavigationView
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:background="@drawable/round_gradient"
-                android:paddingTop="30dp"
-                android:paddingLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/navigation_header_height">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/image_toolbar"
-                        android:src="@drawable/logo"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp" />
-
-                    <TextView
-                        android:id="@+id/text_toolbar"
-                        android:paddingLeft="7dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textSize="16sp"
-                        android:textColor="@color/white" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/image_profile"
-                    android:src="@drawable/ic_profile"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp" />
-
-                <TextView
-                    android:text="Trần Hoàng Việt"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-            
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/navigation_item_height"
-                android:layout_marginTop="@dimen/padding_tiny_plus_one"
-                android:background="@android:color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin">
-
-                <ImageView
-                    android:layout_width="@dimen/navigation_item_icon_size"
-                    android:layout_height="@dimen/navigation_item_icon_size"
-                    android:src="@drawable/ic_fb" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_extra_extra_large"
-                    android:text="Facebook" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-
-
-    </android.support.design.widget.NavigationView>
-
-</android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

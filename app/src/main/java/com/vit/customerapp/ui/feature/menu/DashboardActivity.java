@@ -1,9 +1,12 @@
 package com.vit.customerapp.ui.feature.menu;
 
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.res.ResourcesCompat;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,11 +19,12 @@ import android.view.MenuItem;
 
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
+import com.vit.customerapp.ui.feature.EmptyActivity;
 
+import butterknife.BindDrawable;
 import butterknife.BindView;
 
-public class DashboardActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class DashboardActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
@@ -28,16 +32,33 @@ public class DashboardActivity extends BaseActivity
     @BindView(R.id.nav_view)
     NavigationView mNavigationView;
 
+
     private ActionBarDrawerToggle mToggle;
 
     @Override
     protected void initView() {
+        mToolbarTitle.setText(getTitleToolbarId());
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         mToggle = new ActionBarDrawerToggle(
-                this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
+                this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mToggle.setDrawerIndicatorEnabled(false);
+        mToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        mToggle.setHomeAsUpIndicator(R.drawable.ic_menu);
 
+
+        mDrawerLayout.addDrawerListener(mToggle);
         mNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void initActionBar() {
+
     }
 
     @Override
@@ -60,7 +81,7 @@ public class DashboardActivity extends BaseActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(mToggle.onOptionsItemSelected(item)) {
+        if (mToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -84,6 +105,7 @@ public class DashboardActivity extends BaseActivity
         } else if (id == R.id.nav_faq) {
 
         }
+        EmptyActivity.moveLoginActivity(this);
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -110,4 +132,6 @@ public class DashboardActivity extends BaseActivity
         super.onConfigurationChanged(newConfig);
         mToggle.onConfigurationChanged(newConfig);
     }
+
+
 }
