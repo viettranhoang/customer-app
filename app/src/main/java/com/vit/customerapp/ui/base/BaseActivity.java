@@ -1,13 +1,11 @@
 package com.vit.customerapp.ui.base;
 
-import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vit.customerapp.R;
-import com.vit.customerapp.ui.feature.EmptyActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,5 +77,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showToast(@StringRes int message) {
+        showToast(getString(message));
     }
 }

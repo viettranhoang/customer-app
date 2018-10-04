@@ -1,5 +1,6 @@
 package com.vit.customerapp.ui.feature.choose_service;
 
+import android.view.Menu;
 import android.view.View;
 
 import com.vit.customerapp.R;
@@ -51,6 +52,13 @@ public class ChooseServiceActivity extends BaseActivity {
     protected int getTitleToolbarId() {
         mImageToolbar.setVisibility(View.VISIBLE);
         return R.string.app_name;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+        return true;
     }
 
 

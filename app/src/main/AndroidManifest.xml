@@ -60,7 +60,8 @@
             android:name=".ui.feature.menu.DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.feature.choose_service.ChooseServiceActivity"></activity>
+        <activity android:name=".ui.feature.choose_service.ChooseServiceActivity" />
+        <activity android:name=".ui.feature.rebook_technician.RebookTechnicianActivity"></activity>
     </application>
 
 </manifest>

@@ -22,6 +22,7 @@ import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
 import com.vit.customerapp.ui.feature.EmptyActivity;
 import com.vit.customerapp.ui.feature.choose_service.ChooseServiceActivity;
+import com.vit.customerapp.ui.feature.rebook_technician.RebookTechnicianActivity;
 
 import butterknife.BindDrawable;
 import butterknife.BindView;
@@ -148,6 +149,6 @@ public class DashboardActivity extends BaseActivity implements NavigationView.On
 
     @OnClick(R.id.layout_rebook)
     void onClickRebook() {
-
+        startActivity(new Intent(this, RebookTechnicianActivity.class));
     }
 }

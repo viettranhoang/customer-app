@@ -10,9 +10,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.vit.customerapp.R;
-import com.vit.customerapp.ui.feature.EmptyActivity;
 import com.vit.customerapp.ui.feature.menu.DashboardActivity;
-import com.vit.customerapp.ui.feature.signin.SignInActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

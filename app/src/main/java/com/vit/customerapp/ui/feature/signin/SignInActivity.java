@@ -16,6 +16,7 @@ import com.vit.customerapp.data.model.request.LoginRequest;
 import com.vit.customerapp.data.model.request.SocialSigninRequest;
 import com.vit.customerapp.data.model.response.RegisterResponse;
 import com.vit.customerapp.ui.feature.EmptyActivity;
+import com.vit.customerapp.ui.feature.menu.DashboardActivity;
 import com.vit.customerapp.ui.feature.password.NewPasswordSettingActivity;
 import com.vit.customerapp.ui.feature.signup.SignUpActivity;
 import com.vit.customerapp.ui.feature.verifyphone.VerifyPhoneActivity;
@@ -86,7 +87,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     public void onLoginSuccess(RegisterResponse response) {
         if (response.getStatus().equals(Utils.STATUS_SUCCESS)) {
             Toast.makeText(SignInActivity.this, "Login successfully!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(SignInActivity.this, EmptyActivity.class));
+            startActivity(new Intent(SignInActivity.this, DashboardActivity.class));
         } else {
             Toast.makeText(SignInActivity.this, response.getStatus() + response.getMessage(), Toast.LENGTH_SHORT).show();
         }

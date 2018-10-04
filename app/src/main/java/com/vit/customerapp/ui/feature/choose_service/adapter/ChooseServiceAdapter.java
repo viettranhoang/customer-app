@@ -48,12 +48,6 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
         @BindView(R.id.text_price)
         TextView mTextPrice;
 
-        @BindDrawable(R.drawable.ic_oval_white)
-        Drawable icOvalWhite;
-
-        @BindDrawable(R.drawable.ic_oval_green_gradient)
-        Drawable icOvalGreen;
-
         private boolean isChoose = false;
 
         public ChooseServiceViewHolder(View itemView) {
@@ -68,12 +62,11 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
         @OnClick(R.id.layout_root)
         void onClickItem() {
             if (isChoose) {
-                mTextPrice.setBackground(icOvalWhite);
                 isChoose = false;
             } else {
-                mTextPrice.setBackground(icOvalGreen);
                 isChoose = true;
             }
+            mTextPrice.setSelected(isChoose);
             Toast.makeText(itemView.getContext(), isChoose + "", Toast.LENGTH_SHORT).show();
             if (listener != null) {
                 listener.onClickChooseService(isChoose);
