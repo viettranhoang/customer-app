@@ -1,12 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="@string/faq"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <TextView
+            android:text="@string/faqs"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_plus"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/round_plus_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_title_work"
+                android:text="@string/how_does_hnail_work"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:clickable="true"
+                android:foreground="@drawable/ripple_effect"
+                android:layout_toRightOf="@id/image_plus"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_content_work"
+                android:text="@string/hnail_help_you_book_a_five_star"
+                android:alpha="0.8"
+                android:visibility="gone"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/text_title_work"
+                android:layout_alignLeft="@id/text_title_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_plus2"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/round_plus_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_title_make"
+                android:text="@string/how_do_i_make_an_appointment"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:clickable="true"
+                android:foreground="@drawable/ripple_effect"
+                android:layout_toRightOf="@id/image_plus2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_content_make"
+                android:text="@string/login_to_your_account"
+                android:visibility="gone"
+                android:alpha="0.8"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/text_title_make"
+                android:layout_alignLeft="@id/text_title_make"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_plus3"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/round_plus_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_title_pay"
+                android:text="@string/how_does_hnail_work"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:clickable="true"
+                android:foreground="@drawable/ripple_effect"
+                android:layout_toRightOf="@id/image_plus3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_content_pay"
+                android:text="@string/hnail_help_you_book_a_five_star"
+                android:alpha="0.8"
+                android:visibility="gone"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/text_title_pay"
+                android:layout_alignLeft="@id/text_title_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
