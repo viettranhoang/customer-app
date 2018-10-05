@@ -1,5 +1,7 @@
 package com.vit.customerapp.ui.feature.rebook_technician;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +31,13 @@ public class RebookTechnicianActivity extends BaseActivity implements OnClickTec
 
     private RebookTechnicianAdapter mAdapter;
     private List<Technician> mListTechnicians;
+
+    public static void moveRebookTechnicianActivity(Activity activity) {
+        Intent intent = new Intent(activity, RebookTechnicianActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        activity.startActivity(intent);
+//        activity.overridePendingTransition(0, 0);
+    }
 
     @Override
     protected void initView() {

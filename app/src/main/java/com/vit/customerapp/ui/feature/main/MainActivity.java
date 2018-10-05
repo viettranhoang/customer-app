@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.vit.customerapp.R;
-import com.vit.customerapp.ui.feature.menu.DashboardActivity;
+import com.vit.customerapp.ui.feature.menu.activity.DashboardActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,5 +1,7 @@
 package com.vit.customerapp.ui.feature.choose_service;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 
@@ -27,6 +29,13 @@ public class ChooseServiceActivity extends BaseActivity {
     ChooseServiceView mViewAddOn;
 
     private List<ChooseServiceView> mChooseServiceViewList;
+
+    public static void moveChooseServiceActivity(Activity activity) {
+        Intent intent = new Intent(activity, ChooseServiceActivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        activity.startActivity(intent);
+//        activity.overridePendingTransition(0, 0);
+    }
 
     @Override
     protected void initView() {
