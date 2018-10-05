@@ -108,4 +108,12 @@
     <!--Term of Use screen-->
     <string name="donec_tristique_turpis">Donec tristique turpis orci, et euismod lectus tempor vitae. Curabitur egestas dui ac pharetra gravida. Morbi tempor mi rhoncus ipsum lobortis lacinia. In vulputate massa sodales, sodales nulla sed, pretium justo. Duis enim nisi, faucibus sit amet mattis vel, varius vel est. Praesent tincidunt velit sed erat congue, eu pharetra est fringilla.</string>
     <string name="aliquam_consectetur_lacus">Aliquam consectetur lacus et urna semper fringilla. Sed vitae pharetra urna. Vivamus quis nunc nulla. Cras cursus augue in vestibulum sollicitudin. Nunc sit amet risus justo. Nullam pretium orci quis justo ullamcorper tempus. Donec tempus sit amet tortor ut rutrum. </string>
+    
+    <!--Customer Support screen-->
+    <string name="need_some_help">Need some help?</string>
+    <string name="please_contact_us_at">Please contact us at</string>
+    <string name="phone_support">818-189-3995</string>
+    <string name="email_support">support@bookhnail.com</string>
+
+
 </resources>

@@ -13,6 +13,7 @@
     <color name="colorHintInput">#29ffc6</color>
     <color name="colorTextError">#d10003</color>
     <color name="colorTextLink">#c31432</color>
+    <color name="scarlet">#d0021b</color>
     
     <color name="gradientEndColor">#94291e</color>
     <color name="gradientStartColor">#ec223b</color>
