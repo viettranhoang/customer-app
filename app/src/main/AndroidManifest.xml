@@ -61,7 +61,8 @@
             android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme" />
         <activity android:name=".ui.feature.choose_service.ChooseServiceActivity" />
-        <activity android:name=".ui.feature.rebook_technician.RebookTechnicianActivity"></activity>
+        <activity android:name=".ui.feature.rebook_technician.RebookTechnicianActivity" />
+        <activity android:name=".ui.feature.menu.notifications.NotificationsActivity"></activity>
     </application>
 
 </manifest>

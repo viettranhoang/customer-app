@@ -96,7 +96,7 @@
     <string name="approx_15mins_remove_nail">(Approx. 15mins): Remove nail polish, shaping &amp; buffing, cuticle care, polish of your choice.</string>
     <string name="regular_polish_deluxe">Regular Polish - Deluxe</string>
     <string name="total">Total $</string>
-    
+
     <!--FAQ screen-->
     <string name="how_does_hnail_work">How does HNail work?</string>
     <string name="how_do_i_make_an_appointment">How do I make an appointment?</string>
@@ -104,16 +104,20 @@
     <string name="hnail_help_you_book_a_five_star">Hnail help you book a Five star nail Salon to you home, Hotel, Office or Event.</string>
     <string name="login_to_your_account">Login to your account and select a service. From there, you will be guided through choosing a style and price point, providing your location information, and roviding payment information (which is securely stored). Then sit back and wait for your technician to arrive.</string>
     <string name="all_payment_is_made">All payment is made via credit card through a 3rd party processing system and no cash is exchanged between technician and client. Upon finish apointment, it will auto charge the service amount to your credit card.</string>
-    
+
     <!--Term of Use screen-->
     <string name="donec_tristique_turpis">Donec tristique turpis orci, et euismod lectus tempor vitae. Curabitur egestas dui ac pharetra gravida. Morbi tempor mi rhoncus ipsum lobortis lacinia. In vulputate massa sodales, sodales nulla sed, pretium justo. Duis enim nisi, faucibus sit amet mattis vel, varius vel est. Praesent tincidunt velit sed erat congue, eu pharetra est fringilla.</string>
     <string name="aliquam_consectetur_lacus">Aliquam consectetur lacus et urna semper fringilla. Sed vitae pharetra urna. Vivamus quis nunc nulla. Cras cursus augue in vestibulum sollicitudin. Nunc sit amet risus justo. Nullam pretium orci quis justo ullamcorper tempus. Donec tempus sit amet tortor ut rutrum. </string>
-    
+
     <!--Customer Support screen-->
     <string name="need_some_help">Need some help?</string>
     <string name="please_contact_us_at">Please contact us at</string>
     <string name="phone_support">818-189-3995</string>
     <string name="email_support">support@bookhnail.com</string>
 
-
+    <!--Notifications screen-->
+    <string name="two_minutes">2 minutes ago</string>
+    <string name="sat_19_may_2018_ppointment">Sat 19 May 2018 Appointment:</string>
+    <string name="thank_you_i_hope_that">Thank you! I hope that you enjoy and satisfied with our service. Please give us good feedback and continue support Hnail.</string>
+    <string name="your_tech_is_on_the_way">Your Tech is on the way</string>
 </resources>
