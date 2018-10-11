@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:background="@drawable/round_corners_gradient"
+    android:background="@drawable/round_corners_gradient_red"
     style="@style/Widget.AppCompat.Button.Colored"
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:gravity="center"

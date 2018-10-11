@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/payment"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/input_payment"
+                android:inputType="number"
+                android:textColor="@color/darkGreyBlue"
+                android:textSize="16sp"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_borders_corner_grey"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:text="@string/this_card_will_be_used"
+                android:alpha="0.5"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.CardView
+            app:cardElevation="5dp"
+            app:cardPreventCornerOverlap="false"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="90dp">
+
+            <android.support.v7.widget.CardView
+                app:cardElevation="4dp"
+                app:cardCornerRadius="5dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                android:clickable="true"
+                android:foreground="@drawable/ripple_effect"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button_update"
+                    android:clickable="true"
+                    android:foreground="@drawable/ripple_effect"
+                    android:text="@string/update_info"
+                    style="@style/ButtonGradient"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </android.support.v7.widget.CardView>
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

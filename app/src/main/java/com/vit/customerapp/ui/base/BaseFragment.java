@@ -48,6 +48,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container,false);
         unbinder = ButterKnife.bind(this, view);
+        setHasOptionsMenu(true);
         return view;
     }
 
