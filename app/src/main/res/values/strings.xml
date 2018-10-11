@@ -120,4 +120,13 @@
     <string name="sat_19_may_2018_ppointment">Sat 19 May 2018 Appointment:</string>
     <string name="thank_you_i_hope_that">Thank you! I hope that you enjoy and satisfied with our service. Please give us good feedback and continue support Hnail.</string>
     <string name="your_tech_is_on_the_way">Your Tech is on the way</string>
+    
+    <!--Appointment Give Feedback screen-->
+    <string name="give_feedback">Give Feedback</string>
+    <string name="skip">Skip</string>
+    <string name="please_give_us_your_feedback">Please give us your feedback</string>
+    <string name="technician_rating">Technician rating:</string>
+    <string name="your_feedback">Your feedback:</string>
+    <string name="submit_your_feedback">Submit Your Feedback</string>
+
 </resources>

@@ -10,6 +10,7 @@ import com.vit.customerapp.R;
 import com.vit.customerapp.data.model.response.Notificaton;
 import com.vit.customerapp.ui.base.BaseActivity;
 import com.vit.customerapp.ui.feature.menu.notifications.adapter.NotificationsAdapter;
+import com.vit.customerapp.ui.feature.menu.notifications.appointment_give_feedback.AppointmentGiveFeedbackActivity;
 import com.vit.customerapp.ui.feature.menu.notifications.listener.OnClickNotificationItemListener;
 
 import java.util.ArrayList;
@@ -63,8 +64,10 @@ public class NotificationsActivity extends BaseActivity implements OnClickNotifi
     }
 
     @Override
-    public void onClickNotification() {
-        showToast("click");
+    public void onClickNotification(int position) {
+        if (position == 0) {
+            AppointmentGiveFeedbackActivity.moveAppointmentGiveFeedbackActivity(this);
+        }
     }
 
     private void initNotificationsRcv() {

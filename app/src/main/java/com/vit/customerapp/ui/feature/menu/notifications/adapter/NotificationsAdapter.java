@@ -81,7 +81,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
         @OnClick(R.id.layout_root)
         void onClickItem() {
-            listener.onClickNotification();
+            listener.onClickNotification(getLayoutPosition());
         }
     }
 }

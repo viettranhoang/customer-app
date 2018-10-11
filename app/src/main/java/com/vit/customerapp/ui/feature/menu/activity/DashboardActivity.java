@@ -22,6 +22,7 @@ import com.vit.customerapp.ui.feature.menu.faq.FaqFragment;
 import com.vit.customerapp.ui.feature.menu.home.HomeFragment;
 import com.vit.customerapp.ui.feature.menu.notifications.NotificationsActivity;
 import com.vit.customerapp.ui.feature.menu.privacy_policy.PrivacyPolicyFragment;
+import com.vit.customerapp.ui.feature.menu.support.CustomerSupportFragment;
 import com.vit.customerapp.ui.feature.menu.term_of_use.TermOfUseFragment;
 
 import butterknife.BindView;
@@ -120,6 +121,10 @@ public class DashboardActivity extends BaseActivity implements NavigationView.On
 
             case R.id.nav_faq:
                 switchFragment(FaqFragment.newInstance(), FaqFragment.TAG, false, true);
+                break;
+
+            case R.id.nav_support:
+                switchFragment(CustomerSupportFragment.newInstance(), CustomerSupportFragment.TAG, false, true);
                 break;
 
         }

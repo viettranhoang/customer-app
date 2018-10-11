@@ -28,7 +28,7 @@
                 android:id="@+id/image_plus"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:background="@drawable/round_plus_minus"
+                android:background="@drawable/selector_plus_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -65,7 +65,7 @@
                 android:id="@+id/image_plus2"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:background="@drawable/round_plus_minus"
+                android:background="@drawable/selector_plus_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -102,7 +102,7 @@
                 android:id="@+id/image_plus3"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:background="@drawable/round_plus_minus"
+                android:background="@drawable/selector_plus_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

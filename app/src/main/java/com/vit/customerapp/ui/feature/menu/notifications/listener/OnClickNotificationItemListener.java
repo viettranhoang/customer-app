@@ -2,5 +2,5 @@ package com.vit.customerapp.ui.feature.menu.notifications.listener;
 
 public interface OnClickNotificationItemListener {
 
-    void onClickNotification();
+    void onClickNotification(int position);
 }

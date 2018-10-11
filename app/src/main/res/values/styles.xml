@@ -7,6 +7,7 @@
         <item name="android:textColor">@color/darkGreyBlue</item>
         <item name="android:textStyle">normal</item>
         <item name="colorControlNormal">@color/white</item>
+        <item name="android:actionMenuTextAppearance">@style/StyleMenuTextAppearance</item>
     </style>
 
     <!--Splash Screen-->
@@ -81,6 +82,11 @@
         <item name="android:paddingLeft">18dp</item>
         <item name="android:paddingTop">20dp</item>
         <item name="android:paddingBottom">20dp</item>
+    </style>
+
+    <style name="StyleMenuTextAppearance" parent="android:TextAppearance.Holo.Widget.ActionBar.Menu">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">17sp</item>
     </style>
 
 </resources>

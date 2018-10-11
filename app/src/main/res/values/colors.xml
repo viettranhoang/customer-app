@@ -19,6 +19,10 @@
     <color name="gradientEndColor">#94291e</color>
     <color name="gradientStartColor">#ec223b</color>
 
+    <color name="orange_dark">#ff512f</color>
+    <color name="orange_light">#f09819</color>
+    <color name="orange">#f77524</color>
+
     <color name="lightGreenBlue">#50ffc6</color>
     <color name="aquaMarineTwo">#46e4b1</color>
     <color name="aquaMarine">#4beaea</color>
