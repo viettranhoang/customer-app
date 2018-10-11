@@ -23,9 +23,11 @@
     <color name="orange_light">#f09819</color>
     <color name="orange">#f77524</color>
 
+    <color name="greenBorderInput">#5ae8c0</color>
     <color name="lightGreenBlue">#50ffc6</color>
     <color name="aquaMarineTwo">#46e4b1</color>
     <color name="aquaMarine">#4beaea</color>
+    <color name="aquaMarine25">#434beaea</color>
     <color name="pinkishGrey">#cbcbcb</color>
 
 </resources>

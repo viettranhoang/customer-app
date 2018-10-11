@@ -56,7 +56,7 @@ public class AccountUserProfileFragment extends BaseFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_edit) {
-
+            AccountUpdateProfileActivity.moveAccountUpdateProfileActivity(mDashboardActivity);
         }
 
         return super.onOptionsItemSelected(item);
@@ -64,6 +64,6 @@ public class AccountUserProfileFragment extends BaseFragment {
 
     @OnClick(R.id.text_change)
     void onClickChange() {
-        AcountUpdatePaymentActivity.moveAcountUpdatePaymentActivity(mDashboardActivity);
+        AccountUpdatePaymentActivity.moveAccountUpdatePaymentActivity(mDashboardActivity);
     }
 }

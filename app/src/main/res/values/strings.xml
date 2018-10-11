@@ -140,5 +140,12 @@
     <string name="payment">Payment</string>
     <string name="this_card_will_be_used">This card will be used for all future payments.</string>
     <string name="update_info">Update Info</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="personal_info">Personal Info</string>
+    <string name="change_location">Change Location</string>
+    <string name="change_password">Change Password</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password_">New password</string>
+    <string name="new_password_confirmation">New password confirmation</string>
 
 </resources>

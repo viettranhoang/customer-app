@@ -6,17 +6,17 @@ import android.content.Intent;
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
 
-public class AcountUpdatePaymentActivity extends BaseActivity {
+public class AccountUpdatePaymentActivity extends BaseActivity {
 
 
-    public static void moveAcountUpdatePaymentActivity(Activity activity) {
-        Intent intent = new Intent(activity, AcountUpdatePaymentActivity.class);
+    public static void moveAccountUpdatePaymentActivity(Activity activity) {
+        Intent intent = new Intent(activity, AccountUpdatePaymentActivity.class);
         activity.startActivity(intent);
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.acount_update_payment_activity;
+        return R.layout.account_update_payment_activity;
     }
 
     @Override

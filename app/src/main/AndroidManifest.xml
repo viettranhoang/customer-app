@@ -64,7 +64,8 @@
         <activity android:name=".ui.feature.rebook_technician.RebookTechnicianActivity" />
         <activity android:name=".ui.feature.menu.notifications.NotificationsActivity" />
         <activity android:name=".ui.feature.menu.notifications.appointment_give_feedback.AppointmentGiveFeedbackActivity" />
-        <activity android:name=".ui.feature.menu.account.AcountUpdatePaymentActivity"></activity>
+        <activity android:name=".ui.feature.menu.account.AccountUpdatePaymentActivity" />
+        <activity android:name=".ui.feature.menu.account.AccountUpdateProfileActivity"></activity>
     </application>
 
 </manifest>
