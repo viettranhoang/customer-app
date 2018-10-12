@@ -15,6 +15,7 @@
     <color name="colorTextLink">#c31432</color>
     <color name="scarlet">#d0021b</color>
     <color name="scarlet5">#0fd0021b</color>
+    <color name="blue">#039fd3</color>
 
     <color name="gradientEndColor">#94291e</color>
     <color name="gradientStartColor">#ec223b</color>
@@ -28,6 +29,7 @@
     <color name="aquaMarineTwo">#46e4b1</color>
     <color name="aquaMarine">#4beaea</color>
     <color name="aquaMarine25">#434beaea</color>
+    <color name="greenText">#39c295</color>
     <color name="pinkishGrey">#cbcbcb</color>
 
 </resources>

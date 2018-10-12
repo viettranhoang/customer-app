@@ -148,4 +148,11 @@
     <string name="new_password_">New password</string>
     <string name="new_password_confirmation">New password confirmation</string>
 
+    <!--My Appointment screen-->
+    <string name="upcoming">Upcoming</string>
+    <string name="past">Past</string>
+    <string name="you_dont_have_any_completed">You don’t have any completed appointments yet. Press <b>BOOK NOW</b> button below to get started</string>
+    <string name="book_now">BOOK NOW</string>
+
+
 </resources>
