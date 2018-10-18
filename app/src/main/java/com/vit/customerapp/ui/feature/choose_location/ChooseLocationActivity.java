@@ -1,4 +1,4 @@
-package com.vit.customerapp.ui.feature.choose_service;
+package com.vit.customerapp.ui.feature.choose_location;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,9 @@ import android.view.View;
 
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
+import com.vit.customerapp.ui.feature.billing_info.BillingInfoActivity;
+
+import butterknife.OnClick;
 
 public class ChooseLocationActivity extends BaseActivity {
 
@@ -36,5 +39,10 @@ public class ChooseLocationActivity extends BaseActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_dashboard, menu);
         return true;
+    }
+
+    @OnClick(R.id.button_continue)
+    void onClickContinue() {
+        BillingInfoActivity.moveBillingInfoActivity(this);
     }
 }

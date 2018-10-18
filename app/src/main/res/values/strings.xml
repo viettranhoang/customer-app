@@ -117,6 +117,18 @@
     <string name="instruction_parking">Instruction Parking</string>
     <string name="where_should_we_park">Where should we park?\nWhat is your entrance code?\nHotel name? Room Number?\nPet?</string>
 
+    <!--Billing Info Screen-->
+    <string name="billing_address">Billing Address</string>
+    <string name="gift_code">Gift Code</string>
+    <string name="zip_code">Zip code</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="same_as_appointment">Same as appointment</string>
+    <string name="apt">Apt#</string>
+    <string name="card_number">Card number</string>
+    <string name="use_different_card"><u>Use different Card</u></string>
+    <string name="address">Address</string>
+
     <!--FAQ screen-->
     <string name="how_does_hnail_work">How does HNail work?</string>
     <string name="how_do_i_make_an_appointment">How do I make an appointment?</string>

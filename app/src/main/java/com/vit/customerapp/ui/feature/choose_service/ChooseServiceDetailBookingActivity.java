@@ -14,6 +14,7 @@ import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener;
 import com.azoft.carousellayoutmanager.CenterScrollListener;
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
+import com.vit.customerapp.ui.feature.choose_location.ChooseLocationActivity;
 import com.vit.customerapp.ui.feature.choose_service.adapter.ChooseServiceColorAdapter;
 import com.vit.customerapp.ui.feature.choose_service.adapter.ChooseServiceDateTimeAdapter;
 
