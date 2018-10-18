@@ -66,7 +66,8 @@
         <activity android:name=".ui.feature.menu.notifications.appointment_give_feedback.AppointmentGiveFeedbackActivity" />
         <activity android:name=".ui.feature.menu.account.AccountUpdatePaymentActivity" />
         <activity android:name=".ui.feature.menu.account.AccountUpdateProfileActivity" />
-        <activity android:name=".ui.feature.choose_service.ChooseServiceDetailBookingActivity"></activity>
+        <activity android:name=".ui.feature.choose_service.ChooseServiceDetailBookingActivity" />
+        <activity android:name=".ui.feature.choose_service.ChooseLocationActivity"></activity>
     </application>
 
 </manifest>

@@ -112,6 +112,11 @@
     <string name="male">Male</string>
     <string name="either">Either</string>
 
+    <!--Choose Location Screen-->
+    <string name="choose_your_location">Choose your Location</string>
+    <string name="instruction_parking">Instruction Parking</string>
+    <string name="where_should_we_park">Where should we park?\nWhat is your entrance code?\nHotel name? Room Number?\nPet?</string>
+
     <!--FAQ screen-->
     <string name="how_does_hnail_work">How does HNail work?</string>
     <string name="how_do_i_make_an_appointment">How do I make an appointment?</string>

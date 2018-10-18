@@ -142,6 +142,11 @@ public class ChooseServiceDetailBookingActivity extends BaseActivity {
         handleButtonGender(mButtonEither);
     }
 
+    @OnClick(R.id.button_continue)
+    void onClickContinue() {
+        ChooseLocationActivity.moveChooseLocationActivity(this);
+    }
+
     private void initManicureRcv() {
 
 //        mRcvManicureColor.setLayoutManager(new CenterZoomLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
