@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+
     <TextView
         android:id="@+id/text_price"
         android:text="$30"
@@ -37,7 +38,8 @@
 
         <TextView
             android:id="@+id/text_title_service"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:text="@string/regular_polish_classic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -20,7 +20,6 @@ import com.vit.customerapp.ui.feature.menu.account.AccountUserProfileFragment;
 import com.vit.customerapp.ui.feature.menu.appointment.AppointmentFragment;
 import com.vit.customerapp.ui.feature.menu.faq.FaqFragment;
 import com.vit.customerapp.ui.feature.menu.home.HomeFragment;
-import com.vit.customerapp.ui.feature.menu.notifications.NotificationsActivity;
 import com.vit.customerapp.ui.feature.menu.privacy_policy.PrivacyPolicyFragment;
 import com.vit.customerapp.ui.feature.menu.support.CustomerSupportFragment;
 import com.vit.customerapp.ui.feature.menu.term_of_use.TermOfUseFragment;
@@ -84,10 +83,6 @@ public class DashboardActivity extends BaseActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_notify) {
-            NotificationsActivity.moveNotificationsActivity(this);
-        }
-
         if (mToggle.onOptionsItemSelected(item)) {
             return true;
         }

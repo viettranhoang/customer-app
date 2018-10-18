@@ -19,7 +19,6 @@ import com.vit.customerapp.ui.feature.choose_service.adapter.ChooseServiceAdapte
 import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ChooseServiceView extends LinearLayout {
 
@@ -81,9 +80,6 @@ public class ChooseServiceView extends LinearLayout {
     private void initialize() {
         inflate(getContext(), R.layout.choose_service_view, this);
         ButterKnife.bind(this);
-
-        mAdapter = new ChooseServiceAdapter();
-        initRcv();
     }
 
     public void hideRcv() {

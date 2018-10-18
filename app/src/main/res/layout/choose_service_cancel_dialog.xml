@@ -12,15 +12,9 @@
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
-        <ImageView
-            android:src="@drawable/ic_check"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
 
         <TextView
-            android:text="@string/successfully"
-            android:layout_marginLeft="5dp"
+            android:text="@string/confirm"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/darkGreyBlue"
@@ -40,7 +34,7 @@
     <TextView
         android:id="@+id/text_content_dialog"
         android:gravity="center"
-        android:text="@string/password_updated_successfully"
+        android:text="@string/do_you_want_to_leave"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="30dp"
@@ -48,14 +42,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/button_login"
-        android:layout_gravity="center"
+    <LinearLayout
+        android:gravity="center"
         android:layout_marginBottom="20dp"
-        android:text="@string/login"
-        style="@style/ButtonRedGradient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_no"
+            android:text="@string/no"
+            android:layout_marginRight="10dp"
+            style="@style/ButtonDarkGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button_yes"
+            android:text="@string/yes"
+            android:layout_marginLeft="10dp"
+            style="@style/ButtonRedGradient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

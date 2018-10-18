@@ -1,19 +1,16 @@
 package com.vit.customerapp.ui.feature.choose_service.adapter;
 
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseViewHolder;
 import com.vit.customerapp.ui.feature.choose_service.listener.OnClickChooseServiceItemListener;
 
-import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -23,7 +20,10 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
     private OnClickChooseServiceItemListener listener;
 
     public ChooseServiceAdapter() {
+    }
 
+    public void setListener(OnClickChooseServiceItemListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -67,9 +67,9 @@ public class ChooseServiceAdapter extends RecyclerView.Adapter<ChooseServiceAdap
                 isChoose = true;
             }
             mTextPrice.setSelected(isChoose);
-            Toast.makeText(itemView.getContext(), isChoose + "", Toast.LENGTH_SHORT).show();
+
             if (listener != null) {
-                listener.onClickChooseService(isChoose);
+                listener.onClickChooseService(Integer.parseInt(mTextPrice.getText().toString().substring(1)), isChoose);
             }
         }
     }

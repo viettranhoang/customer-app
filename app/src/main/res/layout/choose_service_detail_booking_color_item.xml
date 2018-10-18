@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image_gel"
+        android:src="@drawable/ic_gel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/image_choose"
+        android:visibility="gone"
+        android:src="@drawable/ic_checkbox_check"
+        android:layout_alignRight="@id/image_gel"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:text="Big Apple Red"
+        android:layout_below="@id/image_gel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

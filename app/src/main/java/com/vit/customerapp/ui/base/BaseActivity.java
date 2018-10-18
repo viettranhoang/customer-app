@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vit.customerapp.R;
+import com.vit.customerapp.ui.feature.menu.notifications.NotificationsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,6 +54,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
 
+            case R.id.menu_notify:
+                NotificationsActivity.moveNotificationsActivity(this);
+                break;
+
             default:
                 break;
         }
@@ -60,11 +65,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected abstract void initView();
-
     protected abstract int getLayoutId();
 
     protected abstract int getTitleToolbarId();
+
+    protected abstract void initView();
 
     public void initActionBar() {
         mToolbarTitle.setText(getTitleToolbarId());

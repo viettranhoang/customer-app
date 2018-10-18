@@ -96,6 +96,21 @@
     <string name="approx_15mins_remove_nail">(Approx. 15mins): Remove nail polish, shaping &amp; buffing, cuticle care, polish of your choice.</string>
     <string name="regular_polish_deluxe">Regular Polish - Deluxe</string>
     <string name="total">Total $</string>
+    <string name="confirm">Confirm</string>
+    <string name="do_you_want_to_leave">Do you want to leave? Your booking data will be lose.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+
+    <!--Choose Service Detail Booking Screen-->
+    <string name="choose_manicure_gel_olor">Choose Manicure Gel Color</string>
+    <string name="choose_pedicure_gel_olor">Choose Pedicure Gel Color</string>
+    <string name="use_my_own_color">Use my own color</string>
+    <string name="choose_technician_gender">Choose Technician Gender</string>
+    <string name="choose_date_time">Choose Date/Time</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="either">Either</string>
 
     <!--FAQ screen-->
     <string name="how_does_hnail_work">How does HNail work?</string>

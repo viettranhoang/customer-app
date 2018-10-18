@@ -85,7 +85,7 @@
                     android:clickable="true"
                     android:foreground="@drawable/ripple_effect"
                     android:text="@string/update_info"
-                    style="@style/ButtonGradient"
+                    style="@style/ButtonRedGradient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 

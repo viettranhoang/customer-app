@@ -43,46 +43,57 @@
 
     </ScrollView>
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:id="@+id/layout_total"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:alpha="0.95"
-        android:padding="20dp">
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/text_total"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="@string/total"
-            android:textColor="@color/gray_dark"
-            android:textSize="26sp" />
+            android:padding="15dp">
 
-        <TextView
-            android:id="@+id/text_total_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/text_total"
-            android:text="95"
-            android:textColor="@color/gray_dark"
-            android:textSize="26sp" />
+            <TextView
+                android:id="@+id/text_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/total"
+                android:textColor="@color/gray_dark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <Button
-            style="@style/ButtonGradient"
-            android:clickable="true"
-            android:foreground="@drawable/ripple_effect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/button_continue" />
+            <TextView
+                android:id="@+id/text_total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/text_total"
+                android:text="0"
+                android:textColor="@color/gray_dark"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/button_continue"
+                style="@style/ButtonRedGradient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                android:foreground="@drawable/ripple_effect"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/button_continue" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>
 

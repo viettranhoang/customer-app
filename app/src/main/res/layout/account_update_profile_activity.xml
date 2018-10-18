@@ -274,7 +274,7 @@
 
                 <Button
                     android:id="@+id/button_update"
-                    style="@style/ButtonGradient"
+                    style="@style/ButtonRedGradient"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clickable="true"
