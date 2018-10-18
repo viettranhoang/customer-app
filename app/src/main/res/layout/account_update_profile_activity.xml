@@ -13,9 +13,9 @@
         android:layout_height="match_parent">
 
         <ScrollView
-            android:layout_above="@id/layout_botton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_above="@id/layout_botton">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,9 +45,9 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="25dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -60,66 +60,70 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="@string/personal_info"
-                        android:typeface="monospace"
                         android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
 
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:weightSum="2"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:weightSum="2">
 
                     <EditText
+                        style="@style/style_input_border_grey"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
                         android:layout_marginRight="10dp"
-                        style="@style/style_input_border_grey"
-                        android:hint="@string/input_first_name"
                         android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="45dp" />
+                        android:hint="@string/input_first_name"
+                        android:text="Sylvia" />
 
                     <EditText
-                        android:layout_marginLeft="10dp"
                         style="@style/style_input_border_grey"
-                        android:hint="@string/input_last_name"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="45dp" />
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/input_last_name"
+                        android:text="Dunn" />
 
                 </LinearLayout>
 
                 <EditText
-                    android:layout_marginTop="15dp"
+                    style="@style/style_input_border_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="20dp"
                     android:hint="@string/email_address"
-                    style="@style/style_input_border_grey"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp" />
+                    android:text="sylvia.dunn@gmail.com" />
 
                 <EditText
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="25dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="@string/phone_number"
                     style="@style/style_input_border_grey"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp" />
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="25dp"
+                    android:hint="@string/phone_number"
+                    android:text="818-189-3995" />
 
-                <include layout="@layout/line"/>
+                <include layout="@layout/line" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="25dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -132,78 +136,78 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="@string/change_location"
-                        android:typeface="monospace"
                         android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
 
 
                 </LinearLayout>
 
                 <EditText
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     style="@style/style_input_border_grey"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp" />
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp" />
 
                 <LinearLayout
-                    android:weightSum="2"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:weightSum="2">
 
                     <EditText
+                        style="@style/style_input_border_grey"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
                         android:layout_marginRight="10dp"
-                        style="@style/style_input_border_grey"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="45dp" />
+                        android:layout_weight="1" />
 
                     <EditText
-                        android:layout_marginLeft="10dp"
                         style="@style/style_input_border_grey"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="45dp" />
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:weightSum="2">
 
                     <EditText
+                        style="@style/style_input_border_grey"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
                         android:layout_marginRight="10dp"
-                        style="@style/style_input_border_grey"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="45dp" />
+                        android:layout_weight="1" />
 
                     <EditText
-                        android:layout_marginLeft="10dp"
                         style="@style/style_input_border_grey"
-                        android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="45dp" />
+                        android:layout_height="45dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
-                <include layout="@layout/line"/>
+                <include layout="@layout/line" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="25dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -216,38 +220,38 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="@string/change_password"
-                        android:typeface="monospace"
                         android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:typeface="monospace" />
                 </LinearLayout>
 
                 <EditText
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="@string/old_password"
                     style="@style/style_input_border_grey"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp" />
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="@string/old_password" />
 
                 <EditText
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="@string/new_password_"
                     style="@style/style_input_border_grey"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp" />
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="@string/new_password_" />
 
                 <EditText
+                    style="@style/style_input_border_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="@string/new_password_confirmation"
-                    style="@style/style_input_border_grey"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp" />
+                    android:hint="@string/new_password_confirmation" />
 
             </LinearLayout>
         </ScrollView>
