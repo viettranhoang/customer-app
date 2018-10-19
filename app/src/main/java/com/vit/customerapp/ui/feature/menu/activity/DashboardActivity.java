@@ -77,7 +77,7 @@ public class DashboardActivity extends BaseActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+        getMenuInflater().inflate(R.menu.notify_menu, menu);
         return true;
     }
 

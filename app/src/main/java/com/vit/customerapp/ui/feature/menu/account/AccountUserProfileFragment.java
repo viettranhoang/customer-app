@@ -49,7 +49,7 @@ public class AccountUserProfileFragment extends BaseFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
-        inflater.inflate(R.menu.user_profile_menu, menu);
+        inflater.inflate(R.menu.edit_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

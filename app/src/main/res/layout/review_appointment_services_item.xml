@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginBottom="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:text="Manicure - Gel Polish - Classic"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/text_price"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:alpha="0.5"
+        android:layout_below="@id/text_name"
+        android:text="CAJUN SHRIMP"
+        android:textAllCaps="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:layout_marginLeft="30dp"
+        android:id="@+id/text_price"
+        android:text="$50"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

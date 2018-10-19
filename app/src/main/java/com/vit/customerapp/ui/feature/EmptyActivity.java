@@ -2,19 +2,11 @@ package com.vit.customerapp.ui.feature;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
-
-import butterknife.BindView;
 
 public class EmptyActivity extends BaseActivity{
 
@@ -41,7 +33,7 @@ public class EmptyActivity extends BaseActivity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+        getMenuInflater().inflate(R.menu.notify_menu, menu);
         return true;
     }
 

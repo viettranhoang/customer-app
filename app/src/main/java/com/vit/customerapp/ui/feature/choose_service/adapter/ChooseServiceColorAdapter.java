@@ -50,7 +50,8 @@ public class ChooseServiceColorAdapter extends RecyclerView.Adapter<ChooseServic
 
     @Override
     public int getItemCount() {
-        return sizeList;
+        return sizeList
+                ;
     }
 
     @Override

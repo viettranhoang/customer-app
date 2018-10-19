@@ -67,7 +67,7 @@ public class AppointmentGiveFeedbackActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.give_feedback_menu, menu);
+        getMenuInflater().inflate(R.menu.skip_menu, menu);
         return true;
     }
 

@@ -68,7 +68,8 @@
         <activity android:name=".ui.feature.menu.account.AccountUpdateProfileActivity" />
         <activity android:name=".ui.feature.choose_service.ChooseServiceDetailBookingActivity" />
         <activity android:name=".ui.feature.choose_location.ChooseLocationActivity" />
-        <activity android:name=".ui.feature.billing_info.BillingInfoActivity"></activity>
+        <activity android:name=".ui.feature.billing_info.BillingInfoActivity" />
+        <activity android:name=".ui.feature.review_appointment.ReviewAppointmentActivity"></activity>
     </application>
 
 </manifest>

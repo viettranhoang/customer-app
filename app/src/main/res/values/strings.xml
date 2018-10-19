@@ -129,6 +129,13 @@
     <string name="use_different_card"><u>Use different Card</u></string>
     <string name="address">Address</string>
 
+    <!--Review Appointment Screen-->
+    <string name="confirm_appointment">Confirm Appointment</string>
+    <string name="your_card_wont_be_changed">Your card won’t be changed until your appointment is completed. You can cancel your appointment at any time. Terms Apply.</string>
+    <string name="gift_code_value">Gift Code Value</string>
+    <string name="services">Services</string>
+    <string name="your_request_is_now_being_processed">Your request is now being processed. Please wait a moment for our technician confirm your appointment.</string>
+
     <!--FAQ screen-->
     <string name="how_does_hnail_work">How does HNail work?</string>
     <string name="how_do_i_make_an_appointment">How do I make an appointment?</string>

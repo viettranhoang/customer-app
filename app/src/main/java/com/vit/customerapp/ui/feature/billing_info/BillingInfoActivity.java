@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
+import com.vit.customerapp.ui.feature.review_appointment.ReviewAppointmentActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -41,7 +42,7 @@ public class BillingInfoActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+        getMenuInflater().inflate(R.menu.notify_menu, menu);
         return true;
     }
 
@@ -52,6 +53,10 @@ public class BillingInfoActivity extends BaseActivity {
         } else {
             mImageChooseAppointment.setSelected(false);
         }
+    }
 
+    @OnClick(R.id.button_continue)
+    void onClickContinue() {
+        ReviewAppointmentActivity.moveReviewAppointmentActivity(this);
     }
 }
