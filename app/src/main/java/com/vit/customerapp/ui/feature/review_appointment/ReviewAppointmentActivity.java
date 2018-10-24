@@ -97,6 +97,7 @@ public class ReviewAppointmentActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ReviewAppointmentActivity.this, DashboardActivity.class));
+                finish();
             }
         });
 

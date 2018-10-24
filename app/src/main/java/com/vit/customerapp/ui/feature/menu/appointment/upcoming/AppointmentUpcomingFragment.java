@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseFragment;
+import com.vit.customerapp.ui.feature.menu.appointment.AppointmentDetailActivity;
 import com.vit.customerapp.ui.feature.menu.appointment.upcoming.adapter.AppointmentUpcomingAdapter;
 import com.vit.customerapp.ui.feature.menu.appointment.upcoming.listener.OnClickAppointmentUpcomingItemListener;
 
@@ -51,6 +52,6 @@ public class AppointmentUpcomingFragment extends BaseFragment implements OnClick
 
     @Override
     public void onClickkAppointmentUpcoming() {
-        showToast("click appointment upcoming");
+        AppointmentDetailActivity.moveAppointmentDetailActivity(mDashboardActivity);
     }
 }

@@ -135,6 +135,12 @@
     <string name="gift_code_value">Gift Code Value</string>
     <string name="services">Services</string>
     <string name="your_request_is_now_being_processed">Your request is now being processed. Please wait a moment for our technician confirm your appointment.</string>
+    <string name="appointment_requested">Appointment requested</string>
+    <string name="cancel_appointment">Cancel Appointment</string>
+    <string name="reschedule_appointment">Reschedule Appointment</string>
+    <string name="appointment_detail">Appointment Detail</string>
+    <string name="are_you_sure_to_eschedule_appointment">Are you sure to Reschedule appointment?</string>
+    <string name="reschedule">Reschedule</string>
 
     <!--FAQ screen-->
     <string name="how_does_hnail_work">How does HNail work?</string>
