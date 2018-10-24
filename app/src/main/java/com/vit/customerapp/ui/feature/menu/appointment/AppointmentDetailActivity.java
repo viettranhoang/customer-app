@@ -73,7 +73,7 @@ public class AppointmentDetailActivity extends BaseActivity {
         buttonYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AppointmentAddFeedbackActivity.moveAppointmentAddFeedbackActivity(AppointmentDetailActivity.this);
             }
         });
 

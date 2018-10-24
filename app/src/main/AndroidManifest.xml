@@ -70,7 +70,8 @@
         <activity android:name=".ui.feature.choose_location.ChooseLocationActivity" />
         <activity android:name=".ui.feature.billing_info.BillingInfoActivity" />
         <activity android:name=".ui.feature.review_appointment.ReviewAppointmentActivity" />
-        <activity android:name=".ui.feature.menu.appointment.AppointmentDetailActivity"></activity>
+        <activity android:name=".ui.feature.menu.appointment.AppointmentDetailActivity" />
+        <activity android:name=".ui.feature.menu.appointment.AppointmentAddFeedbackActivity"></activity>
     </application>
 
 </manifest>

@@ -141,6 +141,10 @@
     <string name="appointment_detail">Appointment Detail</string>
     <string name="are_you_sure_to_eschedule_appointment">Are you sure to Reschedule appointment?</string>
     <string name="reschedule">Reschedule</string>
+    <string name="none"> </string>
+    <string name="how_was_the_service">How was the Service?</string>
+    <string name="your_feedback_will_help_imporve_us_better">Your Feedback will help imporve us better</string>
+    <string name="tell_us">Tell us</string>
 
     <!--FAQ screen-->
     <string name="how_does_hnail_work">How does HNail work?</string>

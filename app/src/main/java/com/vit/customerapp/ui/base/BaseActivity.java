@@ -58,6 +58,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 NotificationsActivity.moveNotificationsActivity(this);
                 break;
 
+            case R.id.menu_skip:
+                onBackPressed();
+                break;
+
             default:
                 break;
         }

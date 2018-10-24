@@ -1,4 +1,4 @@
-package com.vit.customerapp.ui.feature.menu.notifications.appointment_give_feedback;
+package com.vit.customerapp.ui.feature.menu.appointment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,13 +15,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class AppointmentGiveFeedbackActivity extends BaseActivity {
+public class AppointmentAddFeedbackActivity extends BaseActivity {
 
-
-    public static void moveAppointmentGiveFeedbackActivity(Activity activity) {
-        Intent intent = new Intent(activity, AppointmentGiveFeedbackActivity.class);
+    public static void moveAppointmentAddFeedbackActivity(Activity activity) {
+        Intent intent = new Intent(activity, AppointmentAddFeedbackActivity.class);
         activity.startActivity(intent);
     }
+
 
     @BindView(R.id.image_star1)
     ImageView mImageStar1;
@@ -41,39 +41,32 @@ public class AppointmentGiveFeedbackActivity extends BaseActivity {
 
     private List<ImageView> mStarsList;
 
-    @Override
-    protected void initView() {
-
-        mStarsList = new ArrayList<ImageView>() {{
-           add(mImageStar1);
-           add(mImageStar2);
-           add(mImageStar3);
-           add(mImageStar4);
-           add(mImageStar5);
-        }};
-    }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.appointment_give_feedback_activity;
+        return R.layout.appointment_add_feedback_activity;
     }
 
     @Override
     protected int getTitleToolbarId() {
-        return R.string.give_feedback;
+        return R.string.none;
     }
 
+    @Override
+    protected void initView() {
+        mStarsList = new ArrayList<ImageView>() {{
+            add(mImageStar1);
+            add(mImageStar2);
+            add(mImageStar3);
+            add(mImageStar4);
+            add(mImageStar5);
+        }};
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.skip_menu, menu);
         return true;
-    }
-
-    @Override
-    public void initActionBar() {
-        super.initActionBar();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @OnClick({R.id.image_star1, R.id.image_star2, R.id.image_star3, R.id.image_star4, R.id.image_star5})
