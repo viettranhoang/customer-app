@@ -15,6 +15,7 @@ import com.vit.customerapp.data.remote.ApiUtils;
 import com.vit.customerapp.ui.base.BaseActivity;
 import com.vit.customerapp.ui.feature.rebook_technician.adapter.RebookTechnicianAdapter;
 import com.vit.customerapp.ui.feature.rebook_technician.listener.OnClickTechnicianItemClickListener;
+import com.vit.customerapp.ui.feature.rebook_technician.technician_info.TechnicianInfoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +79,7 @@ public class RebookTechnicianActivity extends BaseActivity implements OnClickTec
 
     @Override
     public void onClickTechnician() {
-        showToast("Click");
+        TechnicianInfoActivity.moveTechnicianInfoActivity(RebookTechnicianActivity.this);
     }
 
     private void getTechnician() {

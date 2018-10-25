@@ -203,5 +203,11 @@
     <string name="you_dont_have_any_completed">You don’t have any completed appointments yet. Press <b>BOOK NOW</b> button below to get started</string>
     <string name="book_now">BOOK NOW</string>
 
+    <!--Technician Info screen-->
+    <string name="technician_info">Technician’s Info</string>
+    <string name="reviews">Reviews</string>
+    <string name="years_exp">years exp</string>
+    <string name="done">done</string>
+
 
 </resources>
