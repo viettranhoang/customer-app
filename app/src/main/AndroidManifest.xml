@@ -72,7 +72,8 @@
         <activity android:name=".ui.feature.review_appointment.ReviewAppointmentActivity" />
         <activity android:name=".ui.feature.menu.appointment.AppointmentDetailActivity" />
         <activity android:name=".ui.feature.menu.appointment.AppointmentAddFeedbackActivity" />
-        <activity android:name=".ui.feature.rebook_technician.technician_info.TechnicianInfoActivity"></activity>
+        <activity android:name=".ui.feature.rebook_technician.technician_info.TechnicianInfoActivity" />
+        <activity android:name=".ui.feature.menu.privacy_policy.AddTipsActivity"></activity>
     </application>
 
 </manifest>

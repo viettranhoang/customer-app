@@ -9,10 +9,9 @@ import android.widget.ImageView;
 import com.vit.customerapp.R;
 import com.vit.customerapp.ui.base.BaseActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.OnClick;
 
 public class AppointmentGiveFeedbackActivity extends BaseActivity {
@@ -23,34 +22,11 @@ public class AppointmentGiveFeedbackActivity extends BaseActivity {
         activity.startActivity(intent);
     }
 
-    @BindView(R.id.image_star1)
-    ImageView mImageStar1;
-
-    @BindView(R.id.image_star2)
-    ImageView mImageStar2;
-
-    @BindView(R.id.image_star3)
-    ImageView mImageStar3;
-
-    @BindView(R.id.image_star4)
-    ImageView mImageStar4;
-
-    @BindView(R.id.image_star5)
-    ImageView mImageStar5;
-
-
-    private List<ImageView> mStarsList;
+    @BindViews({R.id.image_star1, R.id.image_star2, R.id.image_star3, R.id.image_star4, R.id.image_star5})
+    List<ImageView> mStarsList;
 
     @Override
     protected void initView() {
-
-        mStarsList = new ArrayList<ImageView>() {{
-           add(mImageStar1);
-           add(mImageStar2);
-           add(mImageStar3);
-           add(mImageStar4);
-           add(mImageStar5);
-        }};
     }
 
     @Override
