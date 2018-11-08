@@ -4,6 +4,8 @@
     <!--google api-->
     <string name="server_client_id">1080947652501-grbhi8oub804ipinf5pu5pu60jcsn9ll.apps.googleusercontent.com</string>
 
+    <string name="google_maps_key">AIzaSyAQkapwcA3J6O-t82T6sL--AnSMrtVtL5s</string>
+
     <!--facebook api-->
     <string name="facebook_app_id">2258438611059431</string>
     <string name="fb_login_protocol_scheme">fb2258438611059431</string>

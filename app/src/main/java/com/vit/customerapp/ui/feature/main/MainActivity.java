@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.vit.customerapp.R;
-import com.vit.customerapp.ui.feature.menu.activity.DashboardActivity;
+import com.vit.customerapp.ui.feature.choose_location.ChooseLocationActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         initActionBar();
 
-        startActivity(new Intent(this, DashboardActivity.class));
+        startActivity(new Intent(this, ChooseLocationActivity.class));
     }
 
     private void initActionBar() {

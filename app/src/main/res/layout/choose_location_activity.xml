@@ -7,21 +7,22 @@
 
     <include layout="@layout/toolbar" />
 
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/view_map"
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/view_continue"
-        android:layout_marginTop="80dp">
+        android:layout_below="@id/view_map"
+        android:layout_above="@id/view_continue">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@drawable/image_map" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,6 +49,7 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/input_address_name"
                 style="@style/style_input_border_grey"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -64,6 +66,7 @@
                 android:weightSum="2">
 
                 <EditText
+                    android:id="@+id/input_street"
                     style="@style/style_input_border_grey"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
@@ -71,6 +74,7 @@
                     android:layout_weight="1" />
 
                 <EditText
+                    android:id="@+id/input_city"
                     style="@style/style_input_border_grey"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
@@ -90,6 +94,7 @@
                 android:weightSum="2">
 
                 <EditText
+                    android:id="@+id/input_zipcode"
                     style="@style/style_input_border_grey"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
@@ -97,6 +102,7 @@
                     android:layout_weight="1" />
 
                 <EditText
+                    android:id="@+id/input_country_code"
                     style="@style/style_input_border_grey"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
@@ -130,6 +136,7 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/input_parking"
                 style="@style/style_input_border_grey"
                 android:gravity="left|top"
                 android:layout_width="match_parent"

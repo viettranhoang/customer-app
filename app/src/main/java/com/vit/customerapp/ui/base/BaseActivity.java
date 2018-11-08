@@ -44,6 +44,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
         initActionBar();
+        initViewMap(savedInstanceState);
+    }
+
+    public void initViewMap(Bundle savedInstanceState) {
 
     }
 

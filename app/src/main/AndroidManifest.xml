@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:windowSoftInputMode="adjustPan"
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.feature.splash.SplashActivity"
@@ -34,6 +36,11 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -67,7 +74,8 @@
         <activity android:name=".ui.feature.menu.account.AccountUpdatePaymentActivity" />
         <activity android:name=".ui.feature.menu.account.AccountUpdateProfileActivity" />
         <activity android:name=".ui.feature.choose_service.ChooseServiceDetailBookingActivity" />
-        <activity android:name=".ui.feature.choose_location.ChooseLocationActivity" />
+        <activity android:name=".ui.feature.choose_location.ChooseLocationActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:name=".ui.feature.billing_info.BillingInfoActivity" />
         <activity android:name=".ui.feature.review_appointment.ReviewAppointmentActivity" />
         <activity android:name=".ui.feature.menu.appointment.AppointmentDetailActivity" />
