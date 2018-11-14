@@ -7,22 +7,21 @@
 
     <include layout="@layout/toolbar" />
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/view_map"
+    <ScrollView
         android:layout_marginTop="80dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/view_map"
         android:layout_above="@id/view_continue">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <com.vit.customerapp.ui.feature.choose_location.ChooseLocationMapView
+                android:id="@+id/view_map"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,14 +47,14 @@
 
             </LinearLayout>
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/input_address_name"
                 style="@style/style_input_border_grey"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="1419 Westwood Boulevard" />
+                android:singleLine="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
